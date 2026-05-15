@@ -30,9 +30,6 @@
         {
             this.panel1 = new System.Windows.Forms.Panel();
             this.panel4 = new System.Windows.Forms.Panel();
-            this.panel3 = new System.Windows.Forms.Panel();
-            this.textBox1 = new System.Windows.Forms.TextBox();
-            this.panelForm = new System.Windows.Forms.Panel();
             this.buttonTraSach = new System.Windows.Forms.Button();
             this.buttonDangXuat = new System.Windows.Forms.Button();
             this.buttonTaiKhoan = new System.Windows.Forms.Button();
@@ -42,7 +39,10 @@
             this.buttonDanhMuc = new System.Windows.Forms.Button();
             this.buttonThongKe = new System.Windows.Forms.Button();
             this.buttonPhieuMuonSach = new System.Windows.Forms.Button();
+            this.panel3 = new System.Windows.Forms.Panel();
+            this.textBox1 = new System.Windows.Forms.TextBox();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.panelForm = new System.Windows.Forms.Panel();
             this.panel1.SuspendLayout();
             this.panel4.SuspendLayout();
             this.panel3.SuspendLayout();
@@ -78,39 +78,6 @@
             this.panel4.Name = "panel4";
             this.panel4.Size = new System.Drawing.Size(220, 755);
             this.panel4.TabIndex = 12;
-            // 
-            // panel3
-            // 
-            this.panel3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(13)))), ((int)(((byte)(47)))), ((int)(((byte)(102)))));
-            this.panel3.Controls.Add(this.textBox1);
-            this.panel3.Controls.Add(this.pictureBox1);
-            this.panel3.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panel3.Location = new System.Drawing.Point(0, 0);
-            this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(220, 98);
-            this.panel3.TabIndex = 12;
-            // 
-            // textBox1
-            // 
-            this.textBox1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(13)))), ((int)(((byte)(47)))), ((int)(((byte)(102)))));
-            this.textBox1.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.textBox1.Font = new System.Drawing.Font("Trebuchet MS", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox1.ForeColor = System.Drawing.Color.White;
-            this.textBox1.Location = new System.Drawing.Point(74, 12);
-            this.textBox1.Multiline = true;
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(140, 59);
-            this.textBox1.TabIndex = 1;
-            this.textBox1.Text = "QUẢN LÝ THƯ VIỆN";
-            // 
-            // panelForm
-            // 
-            this.panelForm.BackColor = System.Drawing.Color.White;
-            this.panelForm.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panelForm.Location = new System.Drawing.Point(220, 0);
-            this.panelForm.Name = "panelForm";
-            this.panelForm.Size = new System.Drawing.Size(1232, 853);
-            this.panelForm.TabIndex = 2;
             // 
             // buttonTraSach
             // 
@@ -187,7 +154,7 @@
             this.buttonSach.ForeColor = System.Drawing.Color.White;
             this.buttonSach.Image = global::DoAn1_QuanLyThuVien.Properties.Resources.icons8_book_32;
             this.buttonSach.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.buttonSach.Location = new System.Drawing.Point(0, 71);
+            this.buttonSach.Location = new System.Drawing.Point(3, 127);
             this.buttonSach.Name = "buttonSach";
             this.buttonSach.Padding = new System.Windows.Forms.Padding(15, 0, 0, 0);
             this.buttonSach.Size = new System.Drawing.Size(220, 50);
@@ -221,7 +188,7 @@
             this.buttonDanhMuc.ForeColor = System.Drawing.Color.White;
             this.buttonDanhMuc.Image = global::DoAn1_QuanLyThuVien.Properties.Resources.icons8_repository_32;
             this.buttonDanhMuc.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.buttonDanhMuc.Location = new System.Drawing.Point(0, 127);
+            this.buttonDanhMuc.Location = new System.Drawing.Point(0, 71);
             this.buttonDanhMuc.Name = "buttonDanhMuc";
             this.buttonDanhMuc.Padding = new System.Windows.Forms.Padding(15, 0, 0, 0);
             this.buttonDanhMuc.Size = new System.Drawing.Size(220, 50);
@@ -264,6 +231,30 @@
             this.buttonPhieuMuonSach.UseVisualStyleBackColor = false;
             this.buttonPhieuMuonSach.Click += new System.EventHandler(this.buttonPhieuMuonSach_Click);
             // 
+            // panel3
+            // 
+            this.panel3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(13)))), ((int)(((byte)(47)))), ((int)(((byte)(102)))));
+            this.panel3.Controls.Add(this.textBox1);
+            this.panel3.Controls.Add(this.pictureBox1);
+            this.panel3.Dock = System.Windows.Forms.DockStyle.Top;
+            this.panel3.Location = new System.Drawing.Point(0, 0);
+            this.panel3.Name = "panel3";
+            this.panel3.Size = new System.Drawing.Size(220, 98);
+            this.panel3.TabIndex = 12;
+            // 
+            // textBox1
+            // 
+            this.textBox1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(13)))), ((int)(((byte)(47)))), ((int)(((byte)(102)))));
+            this.textBox1.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.textBox1.Font = new System.Drawing.Font("Trebuchet MS", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.textBox1.ForeColor = System.Drawing.Color.White;
+            this.textBox1.Location = new System.Drawing.Point(74, 12);
+            this.textBox1.Multiline = true;
+            this.textBox1.Name = "textBox1";
+            this.textBox1.Size = new System.Drawing.Size(140, 59);
+            this.textBox1.TabIndex = 1;
+            this.textBox1.Text = "QUẢN LÝ THƯ VIỆN";
+            // 
             // pictureBox1
             // 
             this.pictureBox1.Image = global::DoAn1_QuanLyThuVien.Properties.Resources.icons8_open_book_50;
@@ -272,6 +263,15 @@
             this.pictureBox1.Size = new System.Drawing.Size(56, 50);
             this.pictureBox1.TabIndex = 0;
             this.pictureBox1.TabStop = false;
+            // 
+            // panelForm
+            // 
+            this.panelForm.BackColor = System.Drawing.Color.White;
+            this.panelForm.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panelForm.Location = new System.Drawing.Point(220, 0);
+            this.panelForm.Name = "panelForm";
+            this.panelForm.Size = new System.Drawing.Size(1232, 853);
+            this.panelForm.TabIndex = 2;
             // 
             // Menu
             // 
