@@ -27,7 +27,7 @@ namespace DoAn1_QuanLyThuVien
         private void TrangChu_Load(object sender, EventArgs e)
         {
             BuildOverviewPanel();
-            LoadGrids();
+            LoadOverdueGrid();
         }
 
         private void BuildOverviewPanel()
@@ -44,56 +44,107 @@ namespace DoAn1_QuanLyThuVien
                 int quaHan = phieus.Count(p => string.Equals(p.TrangThai, "Quá hạn", StringComparison.OrdinalIgnoreCase)
                                             || (string.Equals(p.TrangThai, "Đang mượn", StringComparison.OrdinalIgnoreCase) && p.NgayTra < DateTime.Now));
 
-                tableLayoutPanel1.Controls.Clear();
-                AddOverviewCell("Tổng số đầu sách", tongSach.ToString(), 0);
-                AddOverviewCell("Tổng độc giả", tongDocGia.ToString(), 1);
-                AddOverviewCell("Đang mượn", dangMuon.ToString(), 2);
-                AddOverviewCell("Quá hạn", quaHan.ToString(), 3);
+                // Clear and build visual tiles
+                panelTiles.Controls.Clear();
+                AddOverviewTile("TỔNG ĐẦU SÁCH", tongSach.ToString(), 0);
+                AddOverviewTile("ĐỘC GIẢ HOẠT ĐỘNG", tongDocGia.ToString(), 1);
+                AddOverviewTile("PHIẾU ĐANG MƯỢN", dangMuon.ToString(), 2);
+                AddOverviewTile("PHIẾU QUÁ HẠN", quaHan.ToString(), 3);
             }
             catch (Exception ex)
             {
                 MessageBox.Show("Lỗi tải tổng quan: " + ex.Message);
             }
         }
-
-        private void AddOverviewCell(string title, string value, int col)
+        private void AddOverviewTile(string title, string value, int index)
         {
+            var panel = new Panel
+            {
+                Width = 260,
+                Height = 90,
+                Margin = new Padding(10),
+                BackColor = Color.White,
+                BorderStyle = BorderStyle.FixedSingle
+            };
+
+            Color accent;
+            switch (index)
+            {
+                case 0: accent = Color.FromArgb(0, 123, 255); break; // blue
+                case 1: accent = Color.FromArgb(40, 167, 69); break; // green
+                case 2: accent = Color.FromArgb(255, 193, 7); break; // yellow
+                case 3: accent = Color.FromArgb(220, 53, 69); break; // red
+                default: accent = Color.Gray; break;
+            }
+
+            var pnlAccent = new Panel { Dock = DockStyle.Top, Height = 8, BackColor = accent };
+
             var lblTitle = new Label
             {
                 Text = title,
-                Dock = DockStyle.Fill,
-                TextAlign = ContentAlignment.MiddleCenter,
-                Font = new Font("Microsoft Sans Serif", 12F, FontStyle.Bold)
+                AutoSize = false,
+                Height = 28,
+                Dock = DockStyle.Top,
+                TextAlign = ContentAlignment.MiddleLeft,
+                Font = new Font("Microsoft Sans Serif", 9F, FontStyle.Bold)
             };
+
             var lblValue = new Label
             {
                 Text = value,
+                AutoSize = false,
                 Dock = DockStyle.Fill,
-                TextAlign = ContentAlignment.MiddleCenter,
-                Font = new Font("Microsoft Sans Serif", 14F, FontStyle.Regular),
-                ForeColor = Color.DarkBlue
+                TextAlign = ContentAlignment.MiddleLeft,
+                Font = new Font("Microsoft Sans Serif", 20F, FontStyle.Bold),
+                ForeColor = accent
             };
-            tableLayoutPanel1.Controls.Add(lblTitle, col, 0);
-            tableLayoutPanel1.Controls.Add(lblValue, col, 1);
+
+            panel.Controls.Add(lblValue);
+            panel.Controls.Add(lblTitle);
+            panel.Controls.Add(pnlAccent);
+
+            panelTiles.Controls.Add(panel);
         }
 
-        private void LoadGrids()
+        private void LoadOverdueGrid()
         {
             try
             {
                 var phieus = phieuMuonBLL.SelectPhieuMuon() ?? new List<PhieuMuon>();
-                dataGridView1.DataSource = phieus
-                    .OrderByDescending(p => p.NgayMuon)
-                    .Take(20)
-                    .ToList();
-                FormatPhieuGrid();
-
+                var chiTiets = new ChiTietMuonBLL().SelectChiTietMuon() ?? new List<ChiTietMuon>();
                 var sachs = sachBLL.SelectSach() ?? new List<Sach>();
-                dataGridView2.DataSource = sachs
-                    .OrderBy(s => s.SoLuongCon)
-                    .Take(20)
-                    .ToList();
-                FormatSachGrid();
+                var docGias = docGiaBLL.SelectDocGia() ?? new List<DocGia>();
+
+                var query = from ct in chiTiets
+                            join p in phieus on ct.MaPhieuMuon equals p.MaPhieuMuon
+                            where ct.NgayTra < DateTime.Now
+                            select new
+                            {
+                                MaPhieu = p.MaPhieuMuon,
+                                TenDocGia = docGias.FirstOrDefault(d => d.MaDocGia == p.MaDocGia)?.TenDocGia ?? "N/A",
+                                Lop = docGias.FirstOrDefault(d => d.MaDocGia == p.MaDocGia)?.Lop ?? "N/A",
+                                SoDienThoai = docGias.FirstOrDefault(d => d.MaDocGia == p.MaDocGia)?.SoDienThoai ?? "N/A",
+                                TenSach = sachs.FirstOrDefault(s => s.MaSach == ct.MaSach)?.TenSach ?? "N/A",
+                                NgayMuon = p.NgayMuon.ToString("dd/MM/yyyy"),
+                                HanTra = ct.NgayTra.ToString("dd/MM/yyyy"),
+                                SoNgayTre = (DateTime.Now.Date - ct.NgayTra.Date).Days
+                            };
+
+                var list = query.OrderByDescending(x => x.SoNgayTre).ToList();
+                dataGridViewOverdue.DataSource = list;
+
+                // Format columns
+                if (dataGridViewOverdue.Columns.Count > 0)
+                {
+                    if (dataGridViewOverdue.Columns.Contains("MaPhieu")) dataGridViewOverdue.Columns["MaPhieu"].HeaderText = "Mã Phiếu";
+                    if (dataGridViewOverdue.Columns.Contains("TenDocGia")) dataGridViewOverdue.Columns["TenDocGia"].HeaderText = "Tên Độc Giả";
+                    if (dataGridViewOverdue.Columns.Contains("Lop")) dataGridViewOverdue.Columns["Lop"].HeaderText = "Lớp";
+                    if (dataGridViewOverdue.Columns.Contains("SoDienThoai")) dataGridViewOverdue.Columns["SoDienThoai"].HeaderText = "SĐT";
+                    if (dataGridViewOverdue.Columns.Contains("TenSach")) dataGridViewOverdue.Columns["TenSach"].HeaderText = "Tên Sách";
+                    if (dataGridViewOverdue.Columns.Contains("NgayMuon")) dataGridViewOverdue.Columns["NgayMuon"].HeaderText = "Ngày Mượn";
+                    if (dataGridViewOverdue.Columns.Contains("HanTra")) dataGridViewOverdue.Columns["HanTra"].HeaderText = "Hạn Trả";
+                    if (dataGridViewOverdue.Columns.Contains("SoNgayTre")) dataGridViewOverdue.Columns["SoNgayTre"].HeaderText = "Số Ngày Trễ";
+                }
             }
             catch (Exception ex)
             {
@@ -103,32 +154,20 @@ namespace DoAn1_QuanLyThuVien
 
         private void FormatPhieuGrid()
         {
-            if (dataGridView1.Columns.Count == 0) return;
-            if (dataGridView1.Columns.Contains("MaPhieuMuon")) dataGridView1.Columns["MaPhieuMuon"].HeaderText = "Mã Phiếu";
-            if (dataGridView1.Columns.Contains("MaDocGia")) dataGridView1.Columns["MaDocGia"].HeaderText = "Mã Độc Giả";
-            if (dataGridView1.Columns.Contains("MaNhanVien")) dataGridView1.Columns["MaNhanVien"].HeaderText = "Mã NV";
-            if (dataGridView1.Columns.Contains("NgayMuon")) dataGridView1.Columns["NgayMuon"].HeaderText = "Ngày Mượn";
-            if (dataGridView1.Columns.Contains("NgayTra")) dataGridView1.Columns["NgayTra"].HeaderText = "Hẹn Trả";
-            if (dataGridView1.Columns.Contains("GhiChu")) dataGridView1.Columns["GhiChu"].Visible = false;
-            if (dataGridView1.Columns.Contains("TrangThai")) dataGridView1.Columns["TrangThai"].HeaderText = "Trạng Thái";
+            // No-op: legacy grid formatting removed. Using dataGridViewOverdue for main dashboard list.
         }
 
         private void FormatSachGrid()
         {
-            if (dataGridView2.Columns.Count == 0) return;
-            if (dataGridView2.Columns.Contains("MaSach")) dataGridView2.Columns["MaSach"].HeaderText = "Mã Sách";
-            if (dataGridView2.Columns.Contains("TenSach")) dataGridView2.Columns["TenSach"].HeaderText = "Tên Sách";
-            if (dataGridView2.Columns.Contains("MaTacGia")) dataGridView2.Columns["MaTacGia"].Visible = false;
-            if (dataGridView2.Columns.Contains("MaTheLoai")) dataGridView2.Columns["MaTheLoai"].Visible = false;
-            if (dataGridView2.Columns.Contains("NamXuatBan")) dataGridView2.Columns["NamXuatBan"].Visible = false;
-            if (dataGridView2.Columns.Contains("NhaXuatBan")) dataGridView2.Columns["NhaXuatBan"].Visible = false;
-            if (dataGridView2.Columns.Contains("TenTacGia")) dataGridView2.Columns["TenTacGia"].Visible = false;
-            if (dataGridView2.Columns.Contains("TenTheLoai")) dataGridView2.Columns["TenTheLoai"].Visible = false;
-            if (dataGridView2.Columns.Contains("TongSoLuong")) dataGridView2.Columns["TongSoLuong"].HeaderText = "Tổng SL";
-            if (dataGridView2.Columns.Contains("SoLuongCon")) dataGridView2.Columns["SoLuongCon"].HeaderText = "Còn Lại";
+            // No-op: legacy grid formatting removed.
         }
 
         private void TrangChu_Load_1(object sender, EventArgs e)
+        {
+
+        }
+
+        private void labelOverdue_Click(object sender, EventArgs e)
         {
 
         }
