@@ -449,8 +449,12 @@
             // 
             this.buttonDong.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.buttonDong.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.buttonDong.ForeColor = System.Drawing.Color.Red;
+            this.buttonDong.Image = global::DoAn1_QuanLyThuVien.Properties.Resources.icons8_cancel_16;
+            this.buttonDong.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.buttonDong.Location = new System.Drawing.Point(1332, 792);
             this.buttonDong.Name = "buttonDong";
+            this.buttonDong.Padding = new System.Windows.Forms.Padding(10, 0, 0, 0);
             this.buttonDong.Size = new System.Drawing.Size(110, 40);
             this.buttonDong.TabIndex = 8;
             this.buttonDong.Text = "Đóng";

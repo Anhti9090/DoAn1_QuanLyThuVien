@@ -27,8 +27,8 @@ namespace DAL
             conn.Open();
             SqlCommand cmd = new SqlCommand("proc_logic", conn);
             cmd.CommandType = CommandType.StoredProcedure;
-            cmd.Parameters.AddWithValue("@User", taikhoan.Username);
-            cmd.Parameters.AddWithValue("@Pass", taikhoan.Password);
+            cmd.Parameters.AddWithValue("@User", taikhoan.TenDangNhap);
+            cmd.Parameters.AddWithValue("@Pass", taikhoan.MatKhau);
 
             cmd.Connection = conn;
             SqlDataReader reader = cmd.ExecuteReader();

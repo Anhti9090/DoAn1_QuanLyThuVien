@@ -38,10 +38,10 @@
             this.textBoxMoTa = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.textBoxTimKiem = new System.Windows.Forms.TextBox();
             this.buttonTimKiem = new System.Windows.Forms.Button();
             this.buttonLamMoi = new System.Windows.Forms.Button();
             this.buttonXoa = new System.Windows.Forms.Button();
-            this.textBoxTimKiem = new System.Windows.Forms.TextBox();
             this.buttonThem = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.groupBox1.SuspendLayout();
@@ -176,6 +176,15 @@
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "CHỨC NĂNG";
             // 
+            // textBoxTimKiem
+            // 
+            this.textBoxTimKiem.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.textBoxTimKiem.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.textBoxTimKiem.Location = new System.Drawing.Point(653, 48);
+            this.textBoxTimKiem.Name = "textBoxTimKiem";
+            this.textBoxTimKiem.Size = new System.Drawing.Size(205, 26);
+            this.textBoxTimKiem.TabIndex = 4;
+            // 
             // buttonTimKiem
             // 
             this.buttonTimKiem.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
@@ -196,7 +205,7 @@
             this.buttonLamMoi.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.buttonLamMoi.Image = global::DoAn1_QuanLyThuVien.Properties.Resources.icons8_reload_16;
             this.buttonLamMoi.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.buttonLamMoi.Location = new System.Drawing.Point(323, 39);
+            this.buttonLamMoi.Location = new System.Drawing.Point(348, 39);
             this.buttonLamMoi.Name = "buttonLamMoi";
             this.buttonLamMoi.Size = new System.Drawing.Size(130, 45);
             this.buttonLamMoi.TabIndex = 0;
@@ -211,7 +220,7 @@
             this.buttonXoa.ForeColor = System.Drawing.Color.Red;
             this.buttonXoa.Image = global::DoAn1_QuanLyThuVien.Properties.Resources.icons8_trash_can_16;
             this.buttonXoa.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.buttonXoa.Location = new System.Drawing.Point(160, 39);
+            this.buttonXoa.Location = new System.Drawing.Point(185, 39);
             this.buttonXoa.Name = "buttonXoa";
             this.buttonXoa.Padding = new System.Windows.Forms.Padding(15, 0, 0, 0);
             this.buttonXoa.Size = new System.Drawing.Size(110, 45);
@@ -220,15 +229,6 @@
             this.buttonXoa.UseVisualStyleBackColor = true;
             this.buttonXoa.Click += new System.EventHandler(this.buttonXoa_Click);
             // 
-            // textBoxTimKiem
-            // 
-            this.textBoxTimKiem.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.textBoxTimKiem.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBoxTimKiem.Location = new System.Drawing.Point(653, 48);
-            this.textBoxTimKiem.Name = "textBoxTimKiem";
-            this.textBoxTimKiem.Size = new System.Drawing.Size(205, 26);
-            this.textBoxTimKiem.TabIndex = 4;
-            // 
             // buttonThem
             // 
             this.buttonThem.BackColor = System.Drawing.Color.LimeGreen;
@@ -236,7 +236,7 @@
             this.buttonThem.ForeColor = System.Drawing.Color.White;
             this.buttonThem.Image = global::DoAn1_QuanLyThuVien.Properties.Resources.icons8_add_16;
             this.buttonThem.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.buttonThem.Location = new System.Drawing.Point(6, 39);
+            this.buttonThem.Location = new System.Drawing.Point(31, 39);
             this.buttonThem.Name = "buttonThem";
             this.buttonThem.Padding = new System.Windows.Forms.Padding(10, 0, 0, 0);
             this.buttonThem.Size = new System.Drawing.Size(110, 45);

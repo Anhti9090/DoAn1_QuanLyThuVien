@@ -35,11 +35,13 @@
             this.label2 = new System.Windows.Forms.Label();
             this.comboBoxRole = new System.Windows.Forms.ComboBox();
             this.label3 = new System.Windows.Forms.Label();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
             // textTenDangNhap
             // 
-            this.textTenDangNhap.BackColor = System.Drawing.SystemColors.Control;
+            this.textTenDangNhap.BackColor = System.Drawing.Color.White;
             this.textTenDangNhap.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.textTenDangNhap.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.textTenDangNhap.Location = new System.Drawing.Point(677, 162);
@@ -49,7 +51,7 @@
             // 
             // textMatKhau
             // 
-            this.textMatKhau.BackColor = System.Drawing.SystemColors.Control;
+            this.textMatKhau.BackColor = System.Drawing.Color.White;
             this.textMatKhau.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.textMatKhau.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.textMatKhau.Location = new System.Drawing.Point(677, 224);
@@ -91,7 +93,7 @@
             // 
             // comboBoxRole
             // 
-            this.comboBoxRole.BackColor = System.Drawing.SystemColors.Control;
+            this.comboBoxRole.BackColor = System.Drawing.Color.White;
             this.comboBoxRole.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.comboBoxRole.FormattingEnabled = true;
             this.comboBoxRole.Location = new System.Drawing.Point(677, 95);
@@ -109,12 +111,25 @@
             this.label3.TabIndex = 6;
             this.label3.Text = "Quyền";
             // 
+            // pictureBox1
+            // 
+            this.pictureBox1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.pictureBox1.Image = global::DoAn1_QuanLyThuVien.Properties.Resources.Thiết_kế_chưa_có_tên__6_2;
+            this.pictureBox1.Location = new System.Drawing.Point(56, 46);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(370, 347);
+            this.pictureBox1.TabIndex = 7;
+            this.pictureBox1.TabStop = false;
+            // 
             // DangNhap
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ControlLightLight;
             this.ClientSize = new System.Drawing.Size(1005, 473);
+            this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.comboBoxRole);
             this.Controls.Add(this.label2);
@@ -124,8 +139,9 @@
             this.Controls.Add(this.textTenDangNhap);
             this.Name = "DangNhap";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "Form1";
+            this.Text = "Đăng nhập";
             this.Load += new System.EventHandler(this.Login_Load);
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -140,6 +156,7 @@
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.ComboBox comboBoxRole;
         private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.PictureBox pictureBox1;
     }
 }
 

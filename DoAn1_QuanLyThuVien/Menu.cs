@@ -76,12 +76,6 @@ namespace DoAn1_QuanLyThuVien
         {
             LoadForm(new ThongKe());
         }
-
-        private void buttonTheLoai_Click_1(object sender, EventArgs e)
-        {
-            LoadForm(new QuanLyTheLoaiSach());
-        }
-
         private void buttonTaiKhoan_Click(object sender, EventArgs e)
         {
             LoadForm(new QuanLyNhanVien());
@@ -100,6 +94,11 @@ namespace DoAn1_QuanLyThuVien
         private void panel1_Paint(object sender, PaintEventArgs e)
         {
 
+        }
+
+        private void buttonDanhMuc_Click(object sender, EventArgs e)
+        {
+            LoadForm(new DanhMuc());
         }
     }
 }

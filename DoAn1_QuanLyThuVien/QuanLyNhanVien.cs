@@ -66,8 +66,8 @@ namespace DoAn1_QuanLyThuVien
 
             List<TaiKhoan> listTaiKhoan = taiKhoanBLL.SelectTaiKhoan();
             dataGridView2.DataSource = listTaiKhoan;
-            dataGridView2.Columns["Username"].HeaderText = "Tên đăng nhập";
-            dataGridView2.Columns["Password"].HeaderText = "Mật khẩu";
+            dataGridView2.Columns["TenDangNhap"].HeaderText = "Tên đăng nhập";
+            dataGridView2.Columns["MatKhau"].HeaderText = "Mật khẩu";
             dataGridView2.Columns["Role"].HeaderText = "Vai trò";
             dataGridView2.Columns["MaNhanVien"].HeaderText = "Mã nhân viên";
             dataGridView2.Columns["TrangThai"].HeaderText = "Trạng thái";
@@ -264,8 +264,8 @@ namespace DoAn1_QuanLyThuVien
 
             try
             {
-                taiKhoan.Username = textBoxTenDN.Text;
-                taiKhoan.Password = textBoxMatKhau1.Text;
+                taiKhoan.TenDangNhap = textBoxTenDN.Text;
+                taiKhoan.MatKhau = textBoxMatKhau1.Text;
                 taiKhoan.Role = comboBoxVT.SelectedValue?.ToString();
                 taiKhoan.MaNhanVien = comboBoxNV.SelectedValue?.ToString();
                 taiKhoan.TrangThai = "Hoạt động";
@@ -301,9 +301,9 @@ namespace DoAn1_QuanLyThuVien
             if (e.RowIndex >= 0)
             {
                 DataGridViewRow row = dataGridView2.Rows[e.RowIndex];
-                textBoxTenDN.Text = row.Cells["Username"].Value.ToString();
+                textBoxTenDN.Text = row.Cells["TenDangNhap"].Value.ToString();
                 textBoxTenDN.ReadOnly = true; // Đặt TextBox tên đăng nhập thành chỉ đọc
-                textBoxMatKhau1.Text = row.Cells["Password"].Value.ToString();
+                textBoxMatKhau1.Text = row.Cells["MatKhau"].Value.ToString();
                 comboBoxVT.SelectedValue = row.Cells["Role"].Value.ToString();
                 comboBoxNV.SelectedValue = row.Cells["MaNhanVien"].Value.ToString();
             }
@@ -324,8 +324,8 @@ namespace DoAn1_QuanLyThuVien
 
             try
             {
-                taiKhoan.Username = textBoxTenDN.Text;
-                taiKhoan.Password = textBoxMatKhau1.Text;
+                taiKhoan.TenDangNhap = textBoxTenDN.Text;
+                taiKhoan.MatKhau = textBoxMatKhau1.Text;
                 taiKhoan.Role = comboBoxVT.SelectedValue?.ToString();
                 taiKhoan.MaNhanVien = comboBoxNV.SelectedValue?.ToString();
                 taiKhoan.TrangThai = "Hoạt động";
@@ -343,19 +343,19 @@ namespace DoAn1_QuanLyThuVien
 
         private void buttonXoaTK_Click(object sender, EventArgs e)
         {
-            string username = textBoxTenDN.Text;
-            if (string.IsNullOrWhiteSpace(username))
+            string TenDangNhap = textBoxTenDN.Text;
+            if (string.IsNullOrWhiteSpace(TenDangNhap))
             {
                 ThongBao.Show(this, "Vui lòng chọn tài khoản cần xoá!", ThongBaoType.Cancel);
                 return;
             }
 
-            if (MessageBox.Show("Xoá tài khoản " + username + "?", "Xác nhận",
+            if (MessageBox.Show("Xoá tài khoản " + TenDangNhap + "?", "Xác nhận",
                 MessageBoxButtons.YesNo, MessageBoxIcon.Question) != DialogResult.Yes) return;
 
             try
             {
-                taiKhoanBLL.DeleteTaiKhoan(username);
+                taiKhoanBLL.DeleteTaiKhoan(TenDangNhap);
                 ThongBao.Show(this, "Xoá tài khoản thành công!", ThongBaoType.Success);
                 LoadTaiKhoan();
                 ClearTaiKhoan();
@@ -382,8 +382,8 @@ namespace DoAn1_QuanLyThuVien
 
             try
             {
-                taiKhoan.Username = textBoxTenDN.Text;
-                taiKhoan.Password = textBoxMatKhau1.Text;
+                taiKhoan.TenDangNhap = textBoxTenDN.Text;
+                taiKhoan.MatKhau = textBoxMatKhau1.Text;
                 taiKhoan.Role = comboBoxVT.SelectedValue?.ToString();
                 taiKhoan.MaNhanVien = comboBoxNV.SelectedValue?.ToString();
                 taiKhoan.TrangThai = "Khoá";
@@ -405,7 +405,7 @@ namespace DoAn1_QuanLyThuVien
             {
                 string text = textBoxTimKiemTK.Text;
                 List<TaiKhoan> listTaiKhoan = taiKhoanBLL.SelectTaiKhoan();
-                var result = listTaiKhoan.Where(tk => tk.Username.Contains(text) || tk.MaNhanVien.Contains(text)).ToList();
+                var result = listTaiKhoan.Where(tk => tk.TenDangNhap.Contains(text) || tk.MaNhanVien.Contains(text)).ToList();
                 dataGridView2.DataSource = result;
             }
             catch (Exception ex)

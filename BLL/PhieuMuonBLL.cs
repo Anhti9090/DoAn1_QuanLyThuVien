@@ -51,5 +51,31 @@ namespace BLL
             }
             return "PM" + (max + 1).ToString("D2");
         }
+
+        public List<SachViewItem> GetSachView(List<Sach> dsSach)
+        {
+            return dsSach.Select(s => new SachViewItem
+            {
+                MaSach = s.MaSach,
+                TenSach = s.TenSach,
+                TenTheLoai = s.TenTheLoai,
+                SoLuongCon = s.SoLuongCon
+            }).ToList();
+        }
+
+        public List<ChiTietMuonViewItem> GetChiTietView(List<ChiTietMuon> dsChiTiet, List<Sach> dsSach)
+        {
+            return (from ct in dsChiTiet
+                    join s in dsSach on ct.MaSach equals s.MaSach into gj
+                    from s in gj.DefaultIfEmpty()
+                    select new ChiTietMuonViewItem
+                    {
+                        MaSach = ct.MaSach,
+                        TenSach = s != null ? s.TenSach : "",
+                        TenTheLoai = s != null ? s.TenTheLoai : "",
+                        SoLuong = ct.SoLuong,
+                        TrangThai = ct.TrangThai
+                    }).ToList();
+        }
     }
 }

@@ -29,8 +29,8 @@ namespace DoAn1_QuanLyThuVien
                 return;
             }
 
-            tk.Username = textTenDangNhap.Text;
-            tk.Password = textMatKhau.Text;
+            tk.TenDangNhap = textTenDangNhap.Text;
+            tk.MatKhau = textMatKhau.Text;
 
             string result = TKBLL.CheckLogin(tk);
             switch (result)

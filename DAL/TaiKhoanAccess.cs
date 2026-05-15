@@ -21,10 +21,10 @@ namespace DAL
             try
             {
                 conn.Open();
-                string query = "SELECT Role FROM TaiKhoan WHERE Username=@user AND Password=@pass AND TrangThai=N'Hoạt động'";
+                string query = "SELECT Role FROM TaiKhoan WHERE TenDangNhap=@user AND MatKhau=@pass AND TrangThai=N'Hoạt động'";
                 SqlCommand cmd = new SqlCommand(query, conn);
-                cmd.Parameters.AddWithValue("@user", taikhoan.Username);
-                cmd.Parameters.AddWithValue("@pass", taikhoan.Password);
+                cmd.Parameters.AddWithValue("@user", taikhoan.TenDangNhap);
+                cmd.Parameters.AddWithValue("@pass", taikhoan.MatKhau);
 
                 SqlDataReader reader = cmd.ExecuteReader();
                 if (reader.Read())
@@ -47,10 +47,10 @@ namespace DAL
             try
             {
                 conn.Open();
-                string query = "INSERT INTO TaiKhoan (Username, Password, Role, MaNhanVien, TrangThai) VALUES (@Username, @Password, @Role, @MaNhanVien, @TrangThai)";
+                string query = "INSERT INTO TaiKhoan (TenDangNhap, MatKhau, Role, MaNhanVien, TrangThai) VALUES (@TenDangNhap, @MatKhau, @Role, @MaNhanVien, @TrangThai)";
                 SqlCommand cmd = new SqlCommand(query, conn);
-                cmd.Parameters.AddWithValue("@Username", taikhoan.Username);
-                cmd.Parameters.AddWithValue("@Password", taikhoan.Password);
+                cmd.Parameters.AddWithValue("@TenDangNhap", taikhoan.TenDangNhap);
+                cmd.Parameters.AddWithValue("@MatKhau", taikhoan.MatKhau);
                 cmd.Parameters.AddWithValue("@Role", taikhoan.Role);
                 cmd.Parameters.AddWithValue("@MaNhanVien", taikhoan.MaNhanVien);
                 cmd.Parameters.AddWithValue("@TrangThai", taikhoan.TrangThai);
@@ -68,15 +68,15 @@ namespace DAL
             try
             {
                 conn.Open();
-                string query = "SELECT Username, Password, Role, TrangThai, MaNhanVien FROM TaiKhoan";
+                string query = "SELECT TenDangNhap, MatKhau, Role, TrangThai, MaNhanVien FROM TaiKhoan";
                 SqlCommand cmd = new SqlCommand(query, conn);
                 SqlDataReader reader = cmd.ExecuteReader();
                 while (reader.Read())
                 {
                     TaiKhoan tk = new TaiKhoan
                     {
-                        Username = reader["Username"].ToString(),
-                        Password = reader["Password"].ToString(),
+                        TenDangNhap = reader["TenDangNhap"].ToString(),
+                        MatKhau = reader["MatKhau"].ToString(),
                         Role = reader["Role"].ToString(),
                         MaNhanVien = reader["MaNhanVien"].ToString(),
                         TrangThai = reader["TrangThai"].ToString()
@@ -96,10 +96,10 @@ namespace DAL
             try
             {
                 conn.Open();
-                string query = "UPDATE TaiKhoan SET Password=@Password, Role=@Role, MaNhanVien=@MaNhanVien, TrangThai=@TrangThai WHERE Username=@Username";
+                string query = "UPDATE TaiKhoan SET MatKhau=@MatKhau, Role=@Role, MaNhanVien=@MaNhanVien, TrangThai=@TrangThai WHERE TenDangNhap=@TenDangNhap";
                 SqlCommand cmd = new SqlCommand(query, conn);
-                cmd.Parameters.AddWithValue("@Username", taikhoan.Username);
-                cmd.Parameters.AddWithValue("@Password", taikhoan.Password);
+                cmd.Parameters.AddWithValue("@TenDangNhap", taikhoan.TenDangNhap);
+                cmd.Parameters.AddWithValue("@MatKhau", taikhoan.MatKhau);
                 cmd.Parameters.AddWithValue("@Role", taikhoan.Role);
                 cmd.Parameters.AddWithValue("@MaNhanVien", taikhoan.MaNhanVien);
                 cmd.Parameters.AddWithValue("@TrangThai", taikhoan.TrangThai);
@@ -110,15 +110,15 @@ namespace DAL
                 conn.Close();
             }
         }
-        public static void DeleteTaiKhoan(string username)
+        public static void DeleteTaiKhoan(string TenDangNhap)
         {
             SqlConnection conn = SqlConnectionData.Connect();
             try
             {
                 conn.Open();
-                string query = "DELETE FROM TaiKhoan WHERE Username=@Username";
+                string query = "DELETE FROM TaiKhoan WHERE TenDangNhap=@TenDangNhap";
                 SqlCommand cmd = new SqlCommand(query, conn);
-                cmd.Parameters.AddWithValue("@Username", username);
+                cmd.Parameters.AddWithValue("@TenDangNhap", TenDangNhap);
                 cmd.ExecuteNonQuery();
             }
             finally
@@ -132,7 +132,7 @@ namespace DAL
             try
             {
                 conn.Open();
-                string query = "SELECT Username, Password, Role, TrangThai, MaNhanVien FROM TaiKhoan WHERE Username LIKE @Keyword OR Role LIKE @Keyword";
+                string query = "SELECT TenDangNhap, MatKhau, Role, TrangThai, MaNhanVien FROM TaiKhoan WHERE TenDangNhap LIKE @Keyword OR Role LIKE @Keyword";
                 SqlCommand cmd = new SqlCommand(query, conn);
                 cmd.Parameters.AddWithValue("@Keyword", "%" + keyword + "%");
                 SqlDataReader reader = cmd.ExecuteReader();
@@ -141,8 +141,8 @@ namespace DAL
                 {
                     TaiKhoan tk = new TaiKhoan
                     {
-                        Username = reader["Username"].ToString(),
-                        Password = reader["Password"].ToString(),
+                        TenDangNhap = reader["TenDangNhap"].ToString(),
+                        MatKhau = reader["MatKhau"].ToString(),
                         Role = reader["Role"].ToString(),
                         MaNhanVien = reader["MaNhanVien"].ToString(),
                         TrangThai = reader["TrangThai"].ToString()

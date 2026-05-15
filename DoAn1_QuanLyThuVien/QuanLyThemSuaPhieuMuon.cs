@@ -35,6 +35,16 @@ namespace DoAn1_QuanLyThuVien
 
             this.buttonThoat.Click += (s, e) => this.Close();
             this.comboBox2.SelectedIndexChanged += comboBox2_SelectedIndexChanged;
+
+            // Thêm sự kiện tìm kiếm khi nhấn Enter
+            this.textBoxTimKiem.KeyPress += (s, e) =>
+            {
+                if (e.KeyChar == (char)Keys.Enter)
+                {
+                    buttonTimKiem_Click(s, e);
+                    e.Handled = true;
+                }
+            };
         }
 
         public QuanLyThemSuaPhieuMuon(string maPhieu) : this()
@@ -47,19 +57,17 @@ namespace DoAn1_QuanLyThuVien
         {
             // ComboBox độc giả
             comboBox2.DataSource = docGiaBLL.SelectDocGia();
-            comboBox2.DisplayMember = "TenDocGia";
+            comboBox2.DisplayMember = "MaTenDocGia";  // Hiển thị "Mã - Tên"
             comboBox2.ValueMember = "MaDocGia";
 
             // ComboBox nhân viên
             comboBoxNhanVien.DataSource = nhanVienBLL.SelectNhanVien();
-            comboBoxNhanVien.DisplayMember = "TenNhanVien";
+            comboBoxNhanVien.DisplayMember = "MaTenNhanVien";  // Hiển thị "Mã - Tên"
             comboBoxNhanVien.ValueMember = "MaNhanVien";
 
             // ComboBox sách (cache để tra cứu nhanh)
             dsSach = sachBLL.SelectSach();
-            comboBoxSach.DataSource = dsSach;
-            comboBoxSach.DisplayMember = "TenSach";
-            comboBoxSach.ValueMember = "MaSach";
+            BindDataGridView2();
 
             if (isEdit && !string.IsNullOrEmpty(maPhieuEdit))
             {
@@ -99,29 +107,28 @@ namespace DoAn1_QuanLyThuVien
             textBoxSDT.Text = dg.SoDienThoai;
         }
 
+        private void BindDataGridView2()
+        {
+            dataGridView2.DataSource = null;
+            dataGridView2.DataSource = phieuMuonBLL.GetSachView(dsSach);
+
+            if (dataGridView2.Columns.Count == 0) return;
+            dataGridView2.Columns["MaSach"].HeaderText = "Mã Sách";
+            dataGridView2.Columns["TenSach"].HeaderText = "Tên Sách";
+            dataGridView2.Columns["TenTheLoai"].HeaderText = "Thể Loại";
+            dataGridView2.Columns["SoLuongCon"].HeaderText = "Tồn Kho";
+            dataGridView2.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
+            dataGridView2.ReadOnly = true;
+        }
+
         private void BindGrid()
         {
-            // Join với danh sách sách để hiển thị thêm Tên sách / Tác giả / Thể loại
-            var view = (from ct in dsChiTiet
-                        join s in dsSach on ct.MaSach equals s.MaSach into gj
-                        from s in gj.DefaultIfEmpty()
-                        select new
-                        {
-                            ct.MaSach,
-                            TenSach = s != null ? s.TenSach : "",
-                            TenTacGia = s != null ? s.TenTacGia : "",
-                            TenTheLoai = s != null ? s.TenTheLoai : "",
-                            ct.SoLuong,
-                            ct.TrangThai
-                        }).ToList();
-
             dataGridView1.DataSource = null;
-            dataGridView1.DataSource = view;
+            dataGridView1.DataSource = phieuMuonBLL.GetChiTietView(dsChiTiet, dsSach);
 
             if (dataGridView1.Columns.Count == 0) return;
             dataGridView1.Columns["MaSach"].HeaderText = "Mã Sách";
             dataGridView1.Columns["TenSach"].HeaderText = "Tên Sách";
-            dataGridView1.Columns["TenTacGia"].HeaderText = "Tác Giả";
             dataGridView1.Columns["TenTheLoai"].HeaderText = "Thể Loại";
             dataGridView1.Columns["SoLuong"].HeaderText = "Số Lượng";
             dataGridView1.Columns["TrangThai"].HeaderText = "Trạng Thái";
@@ -135,35 +142,55 @@ namespace DoAn1_QuanLyThuVien
 
         private void buttonThemDS_Click_1(object sender, EventArgs e)
         {
-            if (comboBoxSach.SelectedValue == null)
+            if (dataGridView2.SelectedRows.Count == 0)
             {
                 ThongBao.Show(this, "Vui lòng chọn sách!", ThongBaoType.Cancel);
                 return;
             }
-            string maSach = comboBoxSach.SelectedValue.ToString();
-            int sl = (int)numericUpDownSoLuong.Value;
-            if (sl <= 0)
+
+            var row = dataGridView2.SelectedRows[0];
+            string maSach = row.Cells["MaSach"].Value?.ToString();
+            if (string.IsNullOrEmpty(maSach)) return;
+
+            var sach = dsSach.FirstOrDefault(s => s.MaSach == maSach);
+            if (sach == null) return;
+
+            int soLuong = (int)numericUpDownSoLuong.Value;
+
+            if (sach.SoLuongCon <= 0)
             {
-                ThongBao.Show(this, "Số lượng phải > 0!", ThongBaoType.Cancel);
+                ThongBao.Show(this, string.Format("Sách \"{0}\" đã hết!", sach.TenSach), ThongBaoType.Cancel);
                 return;
             }
+
             var existing = dsChiTiet.FirstOrDefault(c => c.MaSach == maSach);
             if (existing != null)
             {
-                existing.SoLuong += sl;
+                if (existing.SoLuong + soLuong > sach.SoLuongCon)
+                {
+                    ThongBao.Show(this, string.Format("Sách \"{0}\" chỉ còn {1} cuốn!", sach.TenSach, sach.SoLuongCon), ThongBaoType.Cancel);
+                    return;
+                }
+                existing.SoLuong += soLuong;
             }
             else
             {
+                if (soLuong > sach.SoLuongCon)
+                {
+                    ThongBao.Show(this, string.Format("Sách \"{0}\" chỉ còn {1} cuốn!", sach.TenSach, sach.SoLuongCon), ThongBaoType.Cancel);
+                    return;
+                }
                 dsChiTiet.Add(new ChiTietMuon
                 {
                     MaPhieuMuon = textBoxMaPM.Text,
                     MaSach = maSach,
-                    SoLuong = sl,
+                    SoLuong = soLuong,
                     NgayTra = DateTime.MinValue,
                     TienPhat = 0,
                     TrangThai = "Chưa trả"
                 });
             }
+            numericUpDownSoLuong.Value = 1;
             BindGrid();
         }
 
@@ -274,12 +301,48 @@ namespace DoAn1_QuanLyThuVien
             dsChiTiet.Clear();
             BindGrid();
             textBox1.Clear();
-            numericUpDownSoLuong.Value = 1;
         }
 
         private void QuanLyThemSuaPhieuMuon_Load_1(object sender, EventArgs e)
         {
 
+        }
+
+        private void buttonTimKiem_Click(object sender, EventArgs e)
+        {
+            string keyword = textBoxTimKiem.Text.Trim().ToLower();
+
+            if (string.IsNullOrEmpty(keyword))
+            {
+                // Nếu không có từ khóa, hiển thị tất cả sách
+                BindDataGridView2();
+                return;
+            }
+
+            // Lọc danh sách sách theo từ khóa
+            var sachFiltered = dsSach.Where(s => 
+                s.MaSach.ToLower().Contains(keyword) || 
+                s.TenSach.ToLower().Contains(keyword) ||
+                (s.TenTacGia != null && s.TenTacGia.ToLower().Contains(keyword)) ||
+                (s.TenTheLoai != null && s.TenTheLoai.ToLower().Contains(keyword))
+            ).ToList();
+
+            // Hiển thị kết quả tìm kiếm
+            dataGridView2.DataSource = null;
+            dataGridView2.DataSource = phieuMuonBLL.GetSachView(sachFiltered);
+
+            if (dataGridView2.Columns.Count == 0) return;
+            dataGridView2.Columns["MaSach"].HeaderText = "Mã Sách";
+            dataGridView2.Columns["TenSach"].HeaderText = "Tên Sách";
+            dataGridView2.Columns["TenTheLoai"].HeaderText = "Thể Loại";
+            dataGridView2.Columns["SoLuongCon"].HeaderText = "Tồn Kho";
+            dataGridView2.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
+            dataGridView2.ReadOnly = true;
+
+            if (sachFiltered.Count == 0)
+            {
+                ThongBao.Show(this, "Không tìm thấy sách nào!", ThongBaoType.Info);
+            }
         }
     }
 }

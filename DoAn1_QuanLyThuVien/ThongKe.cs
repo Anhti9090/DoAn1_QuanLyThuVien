@@ -30,7 +30,6 @@ namespace DoAn1_QuanLyThuVien
 
         private void ThongKe_Load(object sender, EventArgs e)
         {
-            label9.Visible = false;
 
             comboBoxLoaiThongKe.Items.Clear();
             comboBoxLoaiThongKe.Items.AddRange(new object[] { "Phiếu mượn", "Sách" });

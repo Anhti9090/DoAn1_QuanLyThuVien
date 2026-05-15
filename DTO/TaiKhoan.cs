@@ -8,8 +8,8 @@ namespace DTO
 {
     public class TaiKhoan
     {
-        public string Username { get; set; }
-        public string Password { get; set; }
+        public string TenDangNhap { get; set; }
+        public string MatKhau { get; set; }
         public string Role { get; set; }
         public string MaNhanVien { get; set; }
         public string TrangThai { get; set; }

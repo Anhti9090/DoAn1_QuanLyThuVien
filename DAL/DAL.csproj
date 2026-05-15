@@ -46,6 +46,7 @@
     <Compile Include="DatabaseAccess.cs" />
     <Compile Include="DocGiaAccess.cs" />
     <Compile Include="NhanVienAccess.cs" />
+    <Compile Include="NhaXuatBanAccess.cs" />
     <Compile Include="PhieuMuonAccess.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="QuanLySachAccess.cs" />

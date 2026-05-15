@@ -50,25 +50,27 @@
             this.textBoxDiaChi = new System.Windows.Forms.TextBox();
             this.label8 = new System.Windows.Forms.Label();
             this.textBoxSDT = new System.Windows.Forms.TextBox();
-            this.groupBox5 = new System.Windows.Forms.GroupBox();
-            this.numericUpDownSoLuong = new System.Windows.Forms.NumericUpDown();
-            this.comboBoxSach = new System.Windows.Forms.ComboBox();
-            this.label13 = new System.Windows.Forms.Label();
-            this.label12 = new System.Windows.Forms.Label();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.buttonHuy = new System.Windows.Forms.Button();
             this.buttonThoat = new System.Windows.Forms.Button();
-            this.buttonThemDS = new System.Windows.Forms.Button();
             this.buttonLuu = new System.Windows.Forms.Button();
+            this.buttonThemDS = new System.Windows.Forms.Button();
+            this.dataGridView2 = new System.Windows.Forms.DataGridView();
+            this.numericUpDownSoLuong = new System.Windows.Forms.NumericUpDown();
+            this.labelSoLuong = new System.Windows.Forms.Label();
+            this.groupBox4 = new System.Windows.Forms.GroupBox();
+            this.textBoxTimKiem = new System.Windows.Forms.TextBox();
+            this.buttonTimKiem = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
             this.tableLayoutPanel1.SuspendLayout();
             this.groupBox3.SuspendLayout();
             this.tableLayoutPanel2.SuspendLayout();
-            this.groupBox5.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDownSoLuong)).BeginInit();
             this.groupBox2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDownSoLuong)).BeginInit();
+            this.groupBox4.SuspendLayout();
             this.SuspendLayout();
             // 
             // groupBox1
@@ -324,73 +326,14 @@
             this.textBoxSDT.Size = new System.Drawing.Size(257, 26);
             this.textBoxSDT.TabIndex = 5;
             // 
-            // groupBox5
-            // 
-            this.groupBox5.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.groupBox5.Controls.Add(this.numericUpDownSoLuong);
-            this.groupBox5.Controls.Add(this.comboBoxSach);
-            this.groupBox5.Controls.Add(this.label13);
-            this.groupBox5.Controls.Add(this.label12);
-            this.groupBox5.Controls.Add(this.buttonThemDS);
-            this.groupBox5.Location = new System.Drawing.Point(12, 311);
-            this.groupBox5.Name = "groupBox5";
-            this.groupBox5.Size = new System.Drawing.Size(1237, 91);
-            this.groupBox5.TabIndex = 14;
-            this.groupBox5.TabStop = false;
-            this.groupBox5.Text = "THÊM VÀO DANH SÁCH PHIẾU";
-            // 
-            // numericUpDownSoLuong
-            // 
-            this.numericUpDownSoLuong.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.numericUpDownSoLuong.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.numericUpDownSoLuong.Location = new System.Drawing.Point(454, 37);
-            this.numericUpDownSoLuong.Name = "numericUpDownSoLuong";
-            this.numericUpDownSoLuong.Size = new System.Drawing.Size(78, 26);
-            this.numericUpDownSoLuong.TabIndex = 3;
-            this.numericUpDownSoLuong.Value = new decimal(new int[] {
-            1,
-            0,
-            0,
-            0});
-            // 
-            // comboBoxSach
-            // 
-            this.comboBoxSach.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.comboBoxSach.FormattingEnabled = true;
-            this.comboBoxSach.Location = new System.Drawing.Point(99, 35);
-            this.comboBoxSach.Name = "comboBoxSach";
-            this.comboBoxSach.Size = new System.Drawing.Size(216, 28);
-            this.comboBoxSach.TabIndex = 2;
-            // 
-            // label13
-            // 
-            this.label13.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label13.Location = new System.Drawing.Point(361, 33);
-            this.label13.Name = "label13";
-            this.label13.Size = new System.Drawing.Size(87, 29);
-            this.label13.TabIndex = 1;
-            this.label13.Text = "Số lượng:";
-            this.label13.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // label12
-            // 
-            this.label12.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label12.Location = new System.Drawing.Point(6, 35);
-            this.label12.Name = "label12";
-            this.label12.Size = new System.Drawing.Size(87, 29);
-            this.label12.TabIndex = 1;
-            this.label12.Text = "Sách:";
-            this.label12.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
             // groupBox2
             // 
             this.groupBox2.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.groupBox2.Controls.Add(this.dataGridView1);
-            this.groupBox2.Location = new System.Drawing.Point(12, 408);
+            this.groupBox2.Location = new System.Drawing.Point(549, 311);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(1237, 384);
+            this.groupBox2.Size = new System.Drawing.Size(700, 452);
             this.groupBox2.TabIndex = 15;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "DAH SÁCH PHIẾU MƯỢN";
@@ -407,15 +350,19 @@
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.RowHeadersWidth = 51;
             this.dataGridView1.RowTemplate.Height = 24;
-            this.dataGridView1.Size = new System.Drawing.Size(1225, 357);
+            this.dataGridView1.Size = new System.Drawing.Size(688, 425);
             this.dataGridView1.TabIndex = 0;
             // 
             // buttonHuy
             // 
             this.buttonHuy.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.buttonHuy.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.buttonHuy.ForeColor = System.Drawing.Color.Red;
+            this.buttonHuy.Image = global::DoAn1_QuanLyThuVien.Properties.Resources.icons8_cancel_16;
+            this.buttonHuy.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.buttonHuy.Location = new System.Drawing.Point(1008, 803);
             this.buttonHuy.Name = "buttonHuy";
+            this.buttonHuy.Padding = new System.Windows.Forms.Padding(15, 0, 0, 0);
             this.buttonHuy.Size = new System.Drawing.Size(110, 40);
             this.buttonHuy.TabIndex = 8;
             this.buttonHuy.Text = "Huỷ";
@@ -426,27 +373,16 @@
             // 
             this.buttonThoat.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.buttonThoat.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.buttonThoat.ForeColor = System.Drawing.Color.Red;
+            this.buttonThoat.Image = global::DoAn1_QuanLyThuVien.Properties.Resources.icons8_cancel_16;
+            this.buttonThoat.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.buttonThoat.Location = new System.Drawing.Point(1139, 803);
             this.buttonThoat.Name = "buttonThoat";
+            this.buttonThoat.Padding = new System.Windows.Forms.Padding(10, 0, 0, 0);
             this.buttonThoat.Size = new System.Drawing.Size(110, 40);
             this.buttonThoat.TabIndex = 8;
             this.buttonThoat.Text = "Thoát";
             this.buttonThoat.UseVisualStyleBackColor = true;
-            // 
-            // buttonThemDS
-            // 
-            this.buttonThemDS.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.buttonThemDS.ForeColor = System.Drawing.Color.Blue;
-            this.buttonThemDS.Image = global::DoAn1_QuanLyThuVien.Properties.Resources.icons8_add_16__2_;
-            this.buttonThemDS.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.buttonThemDS.Location = new System.Drawing.Point(586, 25);
-            this.buttonThemDS.Name = "buttonThemDS";
-            this.buttonThemDS.Size = new System.Drawing.Size(220, 45);
-            this.buttonThemDS.TabIndex = 8;
-            this.buttonThemDS.Text = "Thêm vào danh sách";
-            this.buttonThemDS.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.buttonThemDS.UseVisualStyleBackColor = true;
-            this.buttonThemDS.Click += new System.EventHandler(this.buttonThemDS_Click_1);
             // 
             // buttonLuu
             // 
@@ -464,14 +400,113 @@
             this.buttonLuu.UseVisualStyleBackColor = true;
             this.buttonLuu.Click += new System.EventHandler(this.buttonLuu_Click);
             // 
+            // buttonThemDS
+            // 
+            this.buttonThemDS.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.buttonThemDS.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.buttonThemDS.ForeColor = System.Drawing.Color.Blue;
+            this.buttonThemDS.Image = global::DoAn1_QuanLyThuVien.Properties.Resources.icons8_add_16__2_;
+            this.buttonThemDS.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.buttonThemDS.Location = new System.Drawing.Point(305, 395);
+            this.buttonThemDS.Name = "buttonThemDS";
+            this.buttonThemDS.Size = new System.Drawing.Size(220, 51);
+            this.buttonThemDS.TabIndex = 8;
+            this.buttonThemDS.Text = "Thêm vào danh sách";
+            this.buttonThemDS.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.buttonThemDS.UseVisualStyleBackColor = true;
+            this.buttonThemDS.Click += new System.EventHandler(this.buttonThemDS_Click_1);
+            // 
+            // dataGridView2
+            // 
+            this.dataGridView2.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.dataGridView2.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.dataGridView2.BackgroundColor = System.Drawing.Color.White;
+            this.dataGridView2.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridView2.Location = new System.Drawing.Point(6, 79);
+            this.dataGridView2.Name = "dataGridView2";
+            this.dataGridView2.RowHeadersWidth = 51;
+            this.dataGridView2.RowTemplate.Height = 24;
+            this.dataGridView2.Size = new System.Drawing.Size(519, 310);
+            this.dataGridView2.TabIndex = 0;
+            // 
+            // numericUpDownSoLuong
+            // 
+            this.numericUpDownSoLuong.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.numericUpDownSoLuong.Location = new System.Drawing.Point(102, 406);
+            this.numericUpDownSoLuong.Minimum = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
+            this.numericUpDownSoLuong.Name = "numericUpDownSoLuong";
+            this.numericUpDownSoLuong.Size = new System.Drawing.Size(80, 26);
+            this.numericUpDownSoLuong.TabIndex = 10;
+            this.numericUpDownSoLuong.Value = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
+            // 
+            // labelSoLuong
+            // 
+            this.labelSoLuong.AutoSize = true;
+            this.labelSoLuong.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelSoLuong.Location = new System.Drawing.Point(12, 410);
+            this.labelSoLuong.Name = "labelSoLuong";
+            this.labelSoLuong.Size = new System.Drawing.Size(79, 20);
+            this.labelSoLuong.TabIndex = 9;
+            this.labelSoLuong.Text = "Số lượng:";
+            this.labelSoLuong.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            // 
+            // groupBox4
+            // 
+            this.groupBox4.Controls.Add(this.buttonTimKiem);
+            this.groupBox4.Controls.Add(this.textBoxTimKiem);
+            this.groupBox4.Controls.Add(this.dataGridView2);
+            this.groupBox4.Controls.Add(this.labelSoLuong);
+            this.groupBox4.Controls.Add(this.numericUpDownSoLuong);
+            this.groupBox4.Controls.Add(this.buttonThemDS);
+            this.groupBox4.Location = new System.Drawing.Point(12, 311);
+            this.groupBox4.Name = "groupBox4";
+            this.groupBox4.Size = new System.Drawing.Size(531, 452);
+            this.groupBox4.TabIndex = 16;
+            this.groupBox4.TabStop = false;
+            this.groupBox4.Text = "DANH SÁCH";
+            // 
+            // textBoxTimKiem
+            // 
+            this.textBoxTimKiem.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.textBoxTimKiem.Location = new System.Drawing.Point(181, 30);
+            this.textBoxTimKiem.Name = "textBoxTimKiem";
+            this.textBoxTimKiem.Size = new System.Drawing.Size(174, 26);
+            this.textBoxTimKiem.TabIndex = 11;
+            // 
+            // buttonTimKiem
+            // 
+            this.buttonTimKiem.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.buttonTimKiem.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.buttonTimKiem.ForeColor = System.Drawing.Color.Blue;
+            this.buttonTimKiem.Image = global::DoAn1_QuanLyThuVien.Properties.Resources.icons8_search_16__1_;
+            this.buttonTimKiem.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.buttonTimKiem.Location = new System.Drawing.Point(395, 21);
+            this.buttonTimKiem.Name = "buttonTimKiem";
+            this.buttonTimKiem.Size = new System.Drawing.Size(130, 45);
+            this.buttonTimKiem.TabIndex = 12;
+            this.buttonTimKiem.Text = "Tìm kiếm";
+            this.buttonTimKiem.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.buttonTimKiem.UseVisualStyleBackColor = true;
+            this.buttonTimKiem.Click += new System.EventHandler(this.buttonTimKiem_Click);
+            // 
             // QuanLyThemSuaPhieuMuon
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(245)))), ((int)(((byte)(247)))), ((int)(((byte)(251)))));
             this.ClientSize = new System.Drawing.Size(1261, 855);
+            this.Controls.Add(this.groupBox4);
             this.Controls.Add(this.groupBox2);
-            this.Controls.Add(this.groupBox5);
             this.Controls.Add(this.groupBox3);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.buttonThoat);
@@ -486,10 +521,12 @@
             this.groupBox3.ResumeLayout(false);
             this.tableLayoutPanel2.ResumeLayout(false);
             this.tableLayoutPanel2.PerformLayout();
-            this.groupBox5.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDownSoLuong)).EndInit();
             this.groupBox2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDownSoLuong)).EndInit();
+            this.groupBox4.ResumeLayout(false);
+            this.groupBox4.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -514,12 +551,6 @@
         private System.Windows.Forms.TextBox textBoxDiaChi;
         private System.Windows.Forms.TextBox textBoxSDT;
         private System.Windows.Forms.ComboBox comboBox2;
-        private System.Windows.Forms.GroupBox groupBox5;
-        private System.Windows.Forms.NumericUpDown numericUpDownSoLuong;
-        private System.Windows.Forms.ComboBox comboBoxSach;
-        private System.Windows.Forms.Label label13;
-        private System.Windows.Forms.Label label12;
-        private System.Windows.Forms.Button buttonThemDS;
         private System.Windows.Forms.GroupBox groupBox2;
         private System.Windows.Forms.DataGridView dataGridView1;
         private System.Windows.Forms.Button buttonLuu;
@@ -529,5 +560,12 @@
         private System.Windows.Forms.TextBox textBox1;
         private System.Windows.Forms.ComboBox comboBoxNhanVien;
         private System.Windows.Forms.Label label9;
+        private System.Windows.Forms.Button buttonThemDS;
+        private System.Windows.Forms.DataGridView dataGridView2;
+        private System.Windows.Forms.NumericUpDown numericUpDownSoLuong;
+        private System.Windows.Forms.Label labelSoLuong;
+        private System.Windows.Forms.GroupBox groupBox4;
+        private System.Windows.Forms.TextBox textBoxTimKiem;
+        private System.Windows.Forms.Button buttonTimKiem;
     }
 }

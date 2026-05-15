@@ -18,7 +18,7 @@ namespace DAL
             try
             {
                 conn.Open();
-                string query = "SELECT MaNhanVien, TenNhanVien, GioiTinh, NgaySinh, DiaChi, SoDienThoai, Email FROM NhanVien";
+                string query = "SELECT MaNhanVien, TenNhanVien, GioiTinh, NgaySinh, DiaChi, SoDienThoai, Email, ChucVu FROM NhanVien";
                 SqlCommand cmd = new SqlCommand(query, conn);
                 SqlDataReader reader = cmd.ExecuteReader();
                 while (reader.Read())
@@ -32,6 +32,7 @@ namespace DAL
                         DiaChi = reader["DiaChi"].ToString(),
                         SoDienThoai = reader["SoDienThoai"].ToString(),
                         Email = reader["Email"].ToString(),
+                        ChucVu = reader["ChucVu"].ToString()
                     };
                     list.Add(nv);
                 }
@@ -52,7 +53,7 @@ namespace DAL
             try
             {
                 conn.Open();
-                string query = "INSERT INTO NhanVien (MaNhanVien, TenNhanVien, GioiTinh, NgaySinh, DiaChi, SoDienThoai, Email) VALUES (@MaNhanVien, @TenNhanVien, @GioiTinh, @NgaySinh, @DiaChi, @SoDienThoai, @Email)";
+                string query = "INSERT INTO NhanVien (MaNhanVien, TenNhanVien, GioiTinh, NgaySinh, DiaChi, SoDienThoai, Email, ChucVu) VALUES (@MaNhanVien, @TenNhanVien, @GioiTinh, @NgaySinh, @DiaChi, @SoDienThoai, @Email, @ChucVu)";
                 SqlCommand cmd = new SqlCommand(query, conn);
                 cmd.Parameters.AddWithValue("@MaNhanVien", nv.MaNhanVien);
                 cmd.Parameters.AddWithValue("@TenNhanVien", nv.TenNhanVien);
@@ -61,6 +62,7 @@ namespace DAL
                 cmd.Parameters.AddWithValue("@DiaChi", nv.DiaChi);
                 cmd.Parameters.AddWithValue("@SoDienThoai", nv.SoDienThoai);
                 cmd.Parameters.AddWithValue("@Email", nv.Email);
+                cmd.Parameters.AddWithValue("@ChucVu", (object)nv.ChucVu ?? DBNull.Value);
                 cmd.ExecuteNonQuery();
             }
             finally
@@ -74,7 +76,7 @@ namespace DAL
             try
             {
                 conn.Open();
-                string query = "SELECT MaNhanVien, TenNhanVien, GioiTinh, NgaySinh, DiaChi, SoDienThoai, Email FROM NhanVien WHERE MaNhanVien LIKE @Keyword OR TenNhanVien LIKE @Keyword";
+                string query = "SELECT MaNhanVien, TenNhanVien, GioiTinh, NgaySinh, DiaChi, SoDienThoai, Email, ChucVu FROM NhanVien WHERE MaNhanVien LIKE @Keyword OR TenNhanVien LIKE @Keyword";
                 SqlCommand cmd = new SqlCommand(query, conn);
                 cmd.Parameters.AddWithValue("@Keyword", "%" + keyword + "%");
                 SqlDataReader reader = cmd.ExecuteReader();
@@ -89,7 +91,8 @@ namespace DAL
                         NgaySinh = Convert.ToDateTime(reader["NgaySinh"]),
                         DiaChi = reader["DiaChi"].ToString(),
                         SoDienThoai = reader["SoDienThoai"].ToString(),
-                        Email = reader["Email"].ToString()
+                        Email = reader["Email"].ToString(),
+                        ChucVu = reader["ChucVu"].ToString()
                     };
                     list.Add(nv);
                 }
@@ -106,7 +109,7 @@ namespace DAL
             try
             {
                 conn.Open();
-                string query = "UPDATE NhanVien SET TenNhanVien=@TenNhanVien, GioiTinh=@GioiTinh, NgaySinh=@NgaySinh, DiaChi=@DiaChi, SoDienThoai=@SoDienThoai, Email=@Email WHERE MaNhanVien=@MaNhanVien";
+                string query = "UPDATE NhanVien SET TenNhanVien=@TenNhanVien, GioiTinh=@GioiTinh, NgaySinh=@NgaySinh, DiaChi=@DiaChi, SoDienThoai=@SoDienThoai, Email=@Email, ChucVu=@ChucVu WHERE MaNhanVien=@MaNhanVien";
                 SqlCommand cmd = new SqlCommand(query, conn);
                 cmd.Parameters.AddWithValue("@MaNhanVien", nv.MaNhanVien);
                 cmd.Parameters.AddWithValue("@TenNhanVien", nv.TenNhanVien);
@@ -115,6 +118,7 @@ namespace DAL
                 cmd.Parameters.AddWithValue("@DiaChi", nv.DiaChi);
                 cmd.Parameters.AddWithValue("@SoDienThoai", nv.SoDienThoai);
                 cmd.Parameters.AddWithValue("@Email", nv.Email);
+                cmd.Parameters.AddWithValue("@ChucVu", (object)nv.ChucVu ?? DBNull.Value);
                 cmd.ExecuteNonQuery();
             }
             finally

@@ -15,5 +15,12 @@ namespace DTO
         public string DiaChi { get; set; }
         public string SoDienThoai { get; set; }
         public string Email { get; set; }
+        public string ChucVu { get; set; }
+
+        // Property để hiển thị trong ComboBox
+        public string MaTenNhanVien
+        {
+            get { return MaNhanVien + " - " + TenNhanVien; }
+        }
     }
 }

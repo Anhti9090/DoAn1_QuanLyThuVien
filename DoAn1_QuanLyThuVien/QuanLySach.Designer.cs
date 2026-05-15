@@ -41,9 +41,9 @@
             this.buttonTimKiem = new System.Windows.Forms.Button();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
+            this.comboBoxNhXB = new System.Windows.Forms.ComboBox();
             this.numericUpDownSLCon = new System.Windows.Forms.NumericUpDown();
             this.label9 = new System.Windows.Forms.Label();
-            this.textBoxNhaXB = new System.Windows.Forms.TextBox();
             this.label8 = new System.Windows.Forms.Label();
             this.numericUpDownTongSL = new System.Windows.Forms.NumericUpDown();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
@@ -146,21 +146,23 @@
             // textBoxNamXB
             // 
             this.textBoxNamXB.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.textBoxNamXB.Dock = System.Windows.Forms.DockStyle.Fill;
             this.textBoxNamXB.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.textBoxNamXB.Location = new System.Drawing.Point(131, 3);
             this.textBoxNamXB.Name = "textBoxNamXB";
-            this.textBoxNamXB.Size = new System.Drawing.Size(177, 26);
+            this.textBoxNamXB.Size = new System.Drawing.Size(218, 26);
             this.textBoxNamXB.TabIndex = 8;
             // 
             // buttonThem
             // 
             this.buttonThem.BackColor = System.Drawing.Color.LimeGreen;
             this.buttonThem.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.buttonThem.ForeColor = System.Drawing.Color.White;
             this.buttonThem.Image = global::DoAn1_QuanLyThuVien.Properties.Resources.icons8_add_16;
             this.buttonThem.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.buttonThem.Location = new System.Drawing.Point(19, 37);
             this.buttonThem.Name = "buttonThem";
-            this.buttonThem.Padding = new System.Windows.Forms.Padding(15, 0, 0, 0);
+            this.buttonThem.Padding = new System.Windows.Forms.Padding(10, 0, 0, 0);
             this.buttonThem.Size = new System.Drawing.Size(110, 45);
             this.buttonThem.TabIndex = 9;
             this.buttonThem.Text = "Thêm";
@@ -181,11 +183,15 @@
             // 
             this.buttonTimKiem.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.buttonTimKiem.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.buttonTimKiem.ForeColor = System.Drawing.Color.Blue;
+            this.buttonTimKiem.Image = global::DoAn1_QuanLyThuVien.Properties.Resources.icons8_search_16__1_;
+            this.buttonTimKiem.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.buttonTimKiem.Location = new System.Drawing.Point(1153, 37);
             this.buttonTimKiem.Name = "buttonTimKiem";
             this.buttonTimKiem.Size = new System.Drawing.Size(130, 45);
             this.buttonTimKiem.TabIndex = 12;
             this.buttonTimKiem.Text = "Tìm Kiếm";
+            this.buttonTimKiem.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.buttonTimKiem.UseVisualStyleBackColor = true;
             this.buttonTimKiem.Click += new System.EventHandler(this.buttonTimKiem_Click);
             // 
@@ -208,15 +214,15 @@
             this.tableLayoutPanel2.ColumnCount = 2;
             this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 36.36364F));
             this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 63.63636F));
+            this.tableLayoutPanel2.Controls.Add(this.comboBoxNhXB, 1, 1);
             this.tableLayoutPanel2.Controls.Add(this.label5, 0, 0);
             this.tableLayoutPanel2.Controls.Add(this.textBoxNamXB, 1, 0);
             this.tableLayoutPanel2.Controls.Add(this.label6, 0, 3);
             this.tableLayoutPanel2.Controls.Add(this.numericUpDownSLCon, 1, 3);
             this.tableLayoutPanel2.Controls.Add(this.label9, 0, 2);
-            this.tableLayoutPanel2.Controls.Add(this.textBoxNhaXB, 1, 1);
             this.tableLayoutPanel2.Controls.Add(this.label8, 0, 1);
             this.tableLayoutPanel2.Controls.Add(this.numericUpDownTongSL, 1, 2);
-            this.tableLayoutPanel2.Location = new System.Drawing.Point(651, 37);
+            this.tableLayoutPanel2.Location = new System.Drawing.Point(611, 37);
             this.tableLayoutPanel2.Name = "tableLayoutPanel2";
             this.tableLayoutPanel2.RowCount = 4;
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 25F));
@@ -225,6 +231,14 @@
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 25F));
             this.tableLayoutPanel2.Size = new System.Drawing.Size(352, 234);
             this.tableLayoutPanel2.TabIndex = 14;
+            // 
+            // comboBoxNhXB
+            // 
+            this.comboBoxNhXB.FormattingEnabled = true;
+            this.comboBoxNhXB.Location = new System.Drawing.Point(131, 61);
+            this.comboBoxNhXB.Name = "comboBoxNhXB";
+            this.comboBoxNhXB.Size = new System.Drawing.Size(218, 24);
+            this.comboBoxNhXB.TabIndex = 15;
             // 
             // numericUpDownSLCon
             // 
@@ -243,15 +257,6 @@
             this.label9.TabIndex = 0;
             this.label9.Text = "Tổng số lượng";
             this.label9.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // textBoxNhaXB
-            // 
-            this.textBoxNhaXB.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.textBoxNhaXB.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBoxNhaXB.Location = new System.Drawing.Point(131, 61);
-            this.textBoxNhaXB.Name = "textBoxNhaXB";
-            this.textBoxNhaXB.Size = new System.Drawing.Size(177, 26);
-            this.textBoxNhaXB.TabIndex = 10;
             // 
             // label8
             // 
@@ -297,37 +302,41 @@
             // textBoxMaSach
             // 
             this.textBoxMaSach.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.textBoxMaSach.Dock = System.Windows.Forms.DockStyle.Fill;
             this.textBoxMaSach.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.textBoxMaSach.Location = new System.Drawing.Point(131, 3);
             this.textBoxMaSach.Name = "textBoxMaSach";
-            this.textBoxMaSach.Size = new System.Drawing.Size(169, 26);
+            this.textBoxMaSach.Size = new System.Drawing.Size(218, 26);
             this.textBoxMaSach.TabIndex = 8;
             // 
             // comboBoxMaTheLoai
             // 
+            this.comboBoxMaTheLoai.Dock = System.Windows.Forms.DockStyle.Fill;
             this.comboBoxMaTheLoai.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.comboBoxMaTheLoai.FormattingEnabled = true;
             this.comboBoxMaTheLoai.Location = new System.Drawing.Point(131, 177);
             this.comboBoxMaTheLoai.Name = "comboBoxMaTheLoai";
-            this.comboBoxMaTheLoai.Size = new System.Drawing.Size(169, 28);
+            this.comboBoxMaTheLoai.Size = new System.Drawing.Size(218, 28);
             this.comboBoxMaTheLoai.TabIndex = 7;
             // 
             // textBoxTenSach
             // 
             this.textBoxTenSach.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.textBoxTenSach.Dock = System.Windows.Forms.DockStyle.Fill;
             this.textBoxTenSach.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.textBoxTenSach.Location = new System.Drawing.Point(131, 61);
             this.textBoxTenSach.Name = "textBoxTenSach";
-            this.textBoxTenSach.Size = new System.Drawing.Size(169, 26);
+            this.textBoxTenSach.Size = new System.Drawing.Size(218, 26);
             this.textBoxTenSach.TabIndex = 8;
             // 
             // comboBoxMaTG
             // 
+            this.comboBoxMaTG.Dock = System.Windows.Forms.DockStyle.Fill;
             this.comboBoxMaTG.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.comboBoxMaTG.FormattingEnabled = true;
             this.comboBoxMaTG.Location = new System.Drawing.Point(131, 119);
             this.comboBoxMaTG.Name = "comboBoxMaTG";
-            this.comboBoxMaTG.Size = new System.Drawing.Size(169, 28);
+            this.comboBoxMaTG.Size = new System.Drawing.Size(218, 28);
             this.comboBoxMaTG.TabIndex = 6;
             // 
             // groupBox2
@@ -350,19 +359,27 @@
             // buttonLamMoi
             // 
             this.buttonLamMoi.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.buttonLamMoi.Image = global::DoAn1_QuanLyThuVien.Properties.Resources.icons8_reload_16;
+            this.buttonLamMoi.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.buttonLamMoi.Location = new System.Drawing.Point(434, 37);
             this.buttonLamMoi.Name = "buttonLamMoi";
+            this.buttonLamMoi.Padding = new System.Windows.Forms.Padding(10, 0, 0, 0);
             this.buttonLamMoi.Size = new System.Drawing.Size(130, 45);
             this.buttonLamMoi.TabIndex = 9;
             this.buttonLamMoi.Text = "Làm Mới";
+            this.buttonLamMoi.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.buttonLamMoi.UseVisualStyleBackColor = true;
             this.buttonLamMoi.Click += new System.EventHandler(this.buttonLamMoi_Click);
             // 
             // button1
             // 
             this.button1.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button1.ForeColor = System.Drawing.Color.Red;
+            this.button1.Image = global::DoAn1_QuanLyThuVien.Properties.Resources.icons8_trash_can_16;
+            this.button1.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.button1.Location = new System.Drawing.Point(307, 37);
             this.button1.Name = "button1";
+            this.button1.Padding = new System.Windows.Forms.Padding(15, 0, 0, 0);
             this.button1.Size = new System.Drawing.Size(110, 45);
             this.button1.TabIndex = 9;
             this.button1.Text = "Xoá";
@@ -372,11 +389,16 @@
             // buttonCapNhat
             // 
             this.buttonCapNhat.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.buttonCapNhat.ForeColor = System.Drawing.Color.Black;
+            this.buttonCapNhat.Image = global::DoAn1_QuanLyThuVien.Properties.Resources.icons8_update_done_16;
+            this.buttonCapNhat.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.buttonCapNhat.Location = new System.Drawing.Point(161, 37);
             this.buttonCapNhat.Name = "buttonCapNhat";
+            this.buttonCapNhat.Padding = new System.Windows.Forms.Padding(5, 0, 0, 0);
             this.buttonCapNhat.Size = new System.Drawing.Size(130, 45);
             this.buttonCapNhat.TabIndex = 9;
             this.buttonCapNhat.Text = "Cập nhật";
+            this.buttonCapNhat.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.buttonCapNhat.UseVisualStyleBackColor = true;
             this.buttonCapNhat.Click += new System.EventHandler(this.buttonCapNhat_Click);
             // 
@@ -422,7 +444,6 @@
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.GroupBox groupBox2;
         private System.Windows.Forms.NumericUpDown numericUpDownSLCon;
-        private System.Windows.Forms.TextBox textBoxNhaXB;
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.Label label9;
         private System.Windows.Forms.NumericUpDown numericUpDownTongSL;
@@ -435,5 +456,6 @@
         private System.Windows.Forms.ComboBox comboBoxMaTG;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel2;
         private System.Windows.Forms.Button buttonLamMoi;
+        private System.Windows.Forms.ComboBox comboBoxNhXB;
     }
 }

@@ -14,9 +14,9 @@ namespace BLL
         public string CheckLogic(TaiKhoan taikhoan)
         {
             //Kiểm tra nghiệp vụ
-            if (string.IsNullOrEmpty(taikhoan.Username))
+            if (string.IsNullOrEmpty(taikhoan.TenDangNhap))
                 return "required_username";
-            if (string.IsNullOrEmpty(taikhoan.Password))
+            if (string.IsNullOrEmpty(taikhoan.MatKhau))
                 return "required_password";
             string info = taiKhoanAccess.CheckLogic(taikhoan);
             return info;
@@ -24,9 +24,9 @@ namespace BLL
 
         public string CheckLogin(TaiKhoan taikhoan)
         {
-            if (string.IsNullOrEmpty(taikhoan.Username))
+            if (string.IsNullOrEmpty(taikhoan.TenDangNhap))
                 return "required_username";
-            if (string.IsNullOrEmpty(taikhoan.Password))
+            if (string.IsNullOrEmpty(taikhoan.MatKhau))
                 return "required_password";
             string role = TaiKhoanAccess.CheckLogin(taikhoan);
             if (role == null)
@@ -61,7 +61,7 @@ namespace BLL
 
             return listTaiKhoan
                 .Where(tk => tk != null &&
-                            ((!string.IsNullOrEmpty(tk.Username) && tk.Username.ToLowerInvariant().Contains(key)) ||
+                            ((!string.IsNullOrEmpty(tk.TenDangNhap) && tk.TenDangNhap.ToLowerInvariant().Contains(key)) ||
                              (!string.IsNullOrEmpty(tk.MaNhanVien) && tk.MaNhanVien.ToLowerInvariant().Contains(key))))
                 .ToList();
         }

@@ -19,5 +19,11 @@ namespace DTO
         public string Lop { get; set; }
         public DateTime NgayLapThe { get; set; }
         public string TrangThai { get; set; }
+
+        // Property để hiển thị trong ComboBox
+        public string MaTenDocGia
+        {
+            get { return MaDocGia + " - " + TenDocGia; }
+        }
     }
 }

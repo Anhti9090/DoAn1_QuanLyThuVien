@@ -29,24 +29,23 @@
         private void InitializeComponent()
         {
             this.panel1 = new System.Windows.Forms.Panel();
-            this.panelForm = new System.Windows.Forms.Panel();
-            this.panel3 = new System.Windows.Forms.Panel();
             this.panel4 = new System.Windows.Forms.Panel();
+            this.panel3 = new System.Windows.Forms.Panel();
             this.textBox1 = new System.Windows.Forms.TextBox();
+            this.panelForm = new System.Windows.Forms.Panel();
             this.buttonTraSach = new System.Windows.Forms.Button();
-            this.buttonTacGia = new System.Windows.Forms.Button();
             this.buttonDangXuat = new System.Windows.Forms.Button();
             this.buttonTaiKhoan = new System.Windows.Forms.Button();
             this.buttonTrangChu = new System.Windows.Forms.Button();
             this.buttonSach = new System.Windows.Forms.Button();
             this.buttonDocGia = new System.Windows.Forms.Button();
-            this.buttonTheLoai = new System.Windows.Forms.Button();
+            this.buttonDanhMuc = new System.Windows.Forms.Button();
             this.buttonThongKe = new System.Windows.Forms.Button();
             this.buttonPhieuMuonSach = new System.Windows.Forms.Button();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.panel1.SuspendLayout();
-            this.panel3.SuspendLayout();
             this.panel4.SuspendLayout();
+            this.panel3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -62,14 +61,23 @@
             this.panel1.TabIndex = 1;
             this.panel1.Paint += new System.Windows.Forms.PaintEventHandler(this.panel1_Paint);
             // 
-            // panelForm
+            // panel4
             // 
-            this.panelForm.BackColor = System.Drawing.Color.White;
-            this.panelForm.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panelForm.Location = new System.Drawing.Point(220, 0);
-            this.panelForm.Name = "panelForm";
-            this.panelForm.Size = new System.Drawing.Size(1232, 853);
-            this.panelForm.TabIndex = 2;
+            this.panel4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(13)))), ((int)(((byte)(47)))), ((int)(((byte)(102)))));
+            this.panel4.Controls.Add(this.buttonTraSach);
+            this.panel4.Controls.Add(this.buttonDangXuat);
+            this.panel4.Controls.Add(this.buttonTaiKhoan);
+            this.panel4.Controls.Add(this.buttonTrangChu);
+            this.panel4.Controls.Add(this.buttonSach);
+            this.panel4.Controls.Add(this.buttonDocGia);
+            this.panel4.Controls.Add(this.buttonDanhMuc);
+            this.panel4.Controls.Add(this.buttonThongKe);
+            this.panel4.Controls.Add(this.buttonPhieuMuonSach);
+            this.panel4.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panel4.Location = new System.Drawing.Point(0, 98);
+            this.panel4.Name = "panel4";
+            this.panel4.Size = new System.Drawing.Size(220, 755);
+            this.panel4.TabIndex = 12;
             // 
             // panel3
             // 
@@ -81,25 +89,6 @@
             this.panel3.Name = "panel3";
             this.panel3.Size = new System.Drawing.Size(220, 98);
             this.panel3.TabIndex = 12;
-            // 
-            // panel4
-            // 
-            this.panel4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(13)))), ((int)(((byte)(47)))), ((int)(((byte)(102)))));
-            this.panel4.Controls.Add(this.buttonTraSach);
-            this.panel4.Controls.Add(this.buttonTacGia);
-            this.panel4.Controls.Add(this.buttonDangXuat);
-            this.panel4.Controls.Add(this.buttonTaiKhoan);
-            this.panel4.Controls.Add(this.buttonTrangChu);
-            this.panel4.Controls.Add(this.buttonSach);
-            this.panel4.Controls.Add(this.buttonDocGia);
-            this.panel4.Controls.Add(this.buttonTheLoai);
-            this.panel4.Controls.Add(this.buttonThongKe);
-            this.panel4.Controls.Add(this.buttonPhieuMuonSach);
-            this.panel4.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel4.Location = new System.Drawing.Point(0, 98);
-            this.panel4.Name = "panel4";
-            this.panel4.Size = new System.Drawing.Size(220, 755);
-            this.panel4.TabIndex = 12;
             // 
             // textBox1
             // 
@@ -114,6 +103,15 @@
             this.textBox1.TabIndex = 1;
             this.textBox1.Text = "QUẢN LÝ THƯ VIỆN";
             // 
+            // panelForm
+            // 
+            this.panelForm.BackColor = System.Drawing.Color.White;
+            this.panelForm.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panelForm.Location = new System.Drawing.Point(220, 0);
+            this.panelForm.Name = "panelForm";
+            this.panelForm.Size = new System.Drawing.Size(1232, 853);
+            this.panelForm.TabIndex = 2;
+            // 
             // buttonTraSach
             // 
             this.buttonTraSach.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(13)))), ((int)(((byte)(47)))), ((int)(((byte)(102)))));
@@ -122,7 +120,7 @@
             this.buttonTraSach.ForeColor = System.Drawing.Color.White;
             this.buttonTraSach.Image = global::DoAn1_QuanLyThuVien.Properties.Resources.icons8_left_2_32;
             this.buttonTraSach.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.buttonTraSach.Location = new System.Drawing.Point(0, 351);
+            this.buttonTraSach.Location = new System.Drawing.Point(0, 295);
             this.buttonTraSach.Name = "buttonTraSach";
             this.buttonTraSach.Padding = new System.Windows.Forms.Padding(15, 0, 0, 0);
             this.buttonTraSach.Size = new System.Drawing.Size(220, 50);
@@ -130,23 +128,6 @@
             this.buttonTraSach.Text = "Trả sách";
             this.buttonTraSach.UseVisualStyleBackColor = false;
             this.buttonTraSach.Click += new System.EventHandler(this.buttonTraSach_Click);
-            // 
-            // buttonTacGia
-            // 
-            this.buttonTacGia.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(13)))), ((int)(((byte)(47)))), ((int)(((byte)(102)))));
-            this.buttonTacGia.FlatAppearance.BorderSize = 0;
-            this.buttonTacGia.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.buttonTacGia.ForeColor = System.Drawing.Color.White;
-            this.buttonTacGia.Image = global::DoAn1_QuanLyThuVien.Properties.Resources.icons8_customer_32;
-            this.buttonTacGia.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.buttonTacGia.Location = new System.Drawing.Point(0, 183);
-            this.buttonTacGia.Name = "buttonTacGia";
-            this.buttonTacGia.Padding = new System.Windows.Forms.Padding(15, 0, 0, 0);
-            this.buttonTacGia.Size = new System.Drawing.Size(220, 50);
-            this.buttonTacGia.TabIndex = 10;
-            this.buttonTacGia.Text = "Tác Giả";
-            this.buttonTacGia.UseVisualStyleBackColor = false;
-            this.buttonTacGia.Click += new System.EventHandler(this.buttonTacGia_Click);
             // 
             // buttonDangXuat
             // 
@@ -172,7 +153,7 @@
             this.buttonTaiKhoan.ForeColor = System.Drawing.Color.White;
             this.buttonTaiKhoan.Image = global::DoAn1_QuanLyThuVien.Properties.Resources.icons8_admin_settings_male_32;
             this.buttonTaiKhoan.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.buttonTaiKhoan.Location = new System.Drawing.Point(0, 463);
+            this.buttonTaiKhoan.Location = new System.Drawing.Point(0, 407);
             this.buttonTaiKhoan.Name = "buttonTaiKhoan";
             this.buttonTaiKhoan.Padding = new System.Windows.Forms.Padding(15, 0, 0, 0);
             this.buttonTaiKhoan.Size = new System.Drawing.Size(220, 50);
@@ -223,7 +204,7 @@
             this.buttonDocGia.ForeColor = System.Drawing.Color.White;
             this.buttonDocGia.Image = global::DoAn1_QuanLyThuVien.Properties.Resources.icons8_reading_32;
             this.buttonDocGia.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.buttonDocGia.Location = new System.Drawing.Point(0, 239);
+            this.buttonDocGia.Location = new System.Drawing.Point(0, 183);
             this.buttonDocGia.Name = "buttonDocGia";
             this.buttonDocGia.Padding = new System.Windows.Forms.Padding(15, 0, 0, 0);
             this.buttonDocGia.Size = new System.Drawing.Size(220, 50);
@@ -232,22 +213,22 @@
             this.buttonDocGia.UseVisualStyleBackColor = false;
             this.buttonDocGia.Click += new System.EventHandler(this.buttonDocGia_Click);
             // 
-            // buttonTheLoai
+            // buttonDanhMuc
             // 
-            this.buttonTheLoai.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(13)))), ((int)(((byte)(47)))), ((int)(((byte)(102)))));
-            this.buttonTheLoai.FlatAppearance.BorderSize = 0;
-            this.buttonTheLoai.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.buttonTheLoai.ForeColor = System.Drawing.Color.White;
-            this.buttonTheLoai.Image = global::DoAn1_QuanLyThuVien.Properties.Resources.icons8_repository_32;
-            this.buttonTheLoai.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.buttonTheLoai.Location = new System.Drawing.Point(0, 127);
-            this.buttonTheLoai.Name = "buttonTheLoai";
-            this.buttonTheLoai.Padding = new System.Windows.Forms.Padding(15, 0, 0, 0);
-            this.buttonTheLoai.Size = new System.Drawing.Size(220, 50);
-            this.buttonTheLoai.TabIndex = 4;
-            this.buttonTheLoai.Text = "Thể Loại";
-            this.buttonTheLoai.UseVisualStyleBackColor = false;
-            this.buttonTheLoai.Click += new System.EventHandler(this.buttonTheLoai_Click_1);
+            this.buttonDanhMuc.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(13)))), ((int)(((byte)(47)))), ((int)(((byte)(102)))));
+            this.buttonDanhMuc.FlatAppearance.BorderSize = 0;
+            this.buttonDanhMuc.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.buttonDanhMuc.ForeColor = System.Drawing.Color.White;
+            this.buttonDanhMuc.Image = global::DoAn1_QuanLyThuVien.Properties.Resources.icons8_repository_32;
+            this.buttonDanhMuc.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.buttonDanhMuc.Location = new System.Drawing.Point(0, 127);
+            this.buttonDanhMuc.Name = "buttonDanhMuc";
+            this.buttonDanhMuc.Padding = new System.Windows.Forms.Padding(15, 0, 0, 0);
+            this.buttonDanhMuc.Size = new System.Drawing.Size(220, 50);
+            this.buttonDanhMuc.TabIndex = 4;
+            this.buttonDanhMuc.Text = "Danh Mục";
+            this.buttonDanhMuc.UseVisualStyleBackColor = false;
+            this.buttonDanhMuc.Click += new System.EventHandler(this.buttonDanhMuc_Click);
             // 
             // buttonThongKe
             // 
@@ -257,7 +238,7 @@
             this.buttonThongKe.ForeColor = System.Drawing.Color.White;
             this.buttonThongKe.Image = global::DoAn1_QuanLyThuVien.Properties.Resources.icons8_bar_chart_32;
             this.buttonThongKe.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.buttonThongKe.Location = new System.Drawing.Point(0, 407);
+            this.buttonThongKe.Location = new System.Drawing.Point(0, 351);
             this.buttonThongKe.Name = "buttonThongKe";
             this.buttonThongKe.Padding = new System.Windows.Forms.Padding(15, 0, 0, 0);
             this.buttonThongKe.Size = new System.Drawing.Size(220, 50);
@@ -274,7 +255,7 @@
             this.buttonPhieuMuonSach.ForeColor = System.Drawing.Color.White;
             this.buttonPhieuMuonSach.Image = global::DoAn1_QuanLyThuVien.Properties.Resources.icons8_storygraph_32;
             this.buttonPhieuMuonSach.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.buttonPhieuMuonSach.Location = new System.Drawing.Point(0, 295);
+            this.buttonPhieuMuonSach.Location = new System.Drawing.Point(0, 239);
             this.buttonPhieuMuonSach.Name = "buttonPhieuMuonSach";
             this.buttonPhieuMuonSach.Padding = new System.Windows.Forms.Padding(15, 0, 0, 0);
             this.buttonPhieuMuonSach.Size = new System.Drawing.Size(220, 50);
@@ -304,9 +285,9 @@
             this.Text = "Menu";
             this.Load += new System.EventHandler(this.Menu_Load);
             this.panel1.ResumeLayout(false);
+            this.panel4.ResumeLayout(false);
             this.panel3.ResumeLayout(false);
             this.panel3.PerformLayout();
-            this.panel4.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
 
@@ -320,10 +301,9 @@
         private System.Windows.Forms.Button buttonSach;
         private System.Windows.Forms.Button buttonDocGia;
         private System.Windows.Forms.Button buttonTaiKhoan;
-        private System.Windows.Forms.Button buttonTheLoai;
+        private System.Windows.Forms.Button buttonDanhMuc;
         private System.Windows.Forms.Button buttonThongKe;
         private System.Windows.Forms.Button buttonPhieuMuonSach;
-        private System.Windows.Forms.Button buttonTacGia;
         private System.Windows.Forms.Button buttonTraSach;
         private System.Windows.Forms.Panel panel4;
         private System.Windows.Forms.Panel panel3;

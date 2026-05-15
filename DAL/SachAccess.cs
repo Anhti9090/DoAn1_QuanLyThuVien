@@ -19,11 +19,12 @@ namespace DAL
                 string query = @"
                     SELECT 
                         s.MaSach, s.TenSach, s.MaTacGia, s.MaTheLoai, 
-                        s.NamXuatBan, s.NhaXuatBan, s.TongSoLuong, s.SoLuongCon,
-                        tg.TenTacGia, tl.TenTheLoai
+                        s.NamXuatBan, s.MaNhaXuatBan, s.TongSoLuong, s.SoLuongCon,
+                        tg.TenTacGia, tl.TenTheLoai, nxb.TenNhaXuatBan
                     FROM Sach s
                     LEFT JOIN TacGia tg ON s.MaTacGia = tg.MaTacGia
-                    LEFT JOIN TheLoai tl ON s.MaTheLoai = tl.MaTheLoai";
+                    LEFT JOIN TheLoai tl ON s.MaTheLoai = tl.MaTheLoai
+                    LEFT JOIN NhaXuatBan nxb ON s.MaNhaXuatBan = nxb.MaNhaXuatBan";
                 SqlCommand command = new SqlCommand(query, conn);
                 SqlDataReader reader = command.ExecuteReader();
                 while (reader.Read())
@@ -34,12 +35,13 @@ namespace DAL
                         TenSach = reader["TenSach"].ToString(),
                         MaTacGia = reader["MaTacGia"].ToString(),
                         MaTheLoai = reader["MaTheLoai"].ToString(),
-                        NamXuatBan = reader["NamXuatBan"].ToString(),
-                        NhaXuatBan = reader["NhaXuatBan"].ToString(),
+                        NamXuatBan = reader["NamXuatBan"] == DBNull.Value ? (int?)null : Convert.ToInt32(reader["NamXuatBan"]),
+                        MaNhaXuatBan = reader["MaNhaXuatBan"].ToString(),
                         TongSoLuong = Convert.ToInt32(reader["TongSoLuong"]),
                         SoLuongCon = Convert.ToInt32(reader["SoLuongCon"]),
                         TenTacGia = reader["TenTacGia"].ToString(),
-                        TenTheLoai = reader["TenTheLoai"].ToString()
+                        TenTheLoai = reader["TenTheLoai"].ToString(),
+                        TenNhaXuatBan = reader["TenNhaXuatBan"].ToString()
                     };
                     list.Add(sach);
                 }
@@ -56,14 +58,14 @@ namespace DAL
             try
             {
                 conn.Open();
-                string query = "INSERT INTO Sach (MaSach, TenSach, MaTacGia, MaTheLoai, NamXuatBan, NhaXuatBan, TongSoLuong, SoLuongCon) VALUES (@MaSach, @TenSach, @MaTacGia, @MaTheLoai, @NamXuatBan, @NhaXuatBan, @TongSoLuong, @SoLuongCon)";
+                string query = "INSERT INTO Sach (MaSach, TenSach, MaTacGia, MaTheLoai, NamXuatBan, MaNhaXuatBan, TongSoLuong, SoLuongCon) VALUES (@MaSach, @TenSach, @MaTacGia, @MaTheLoai, @NamXuatBan, @MaNhaXuatBan, @TongSoLuong, @SoLuongCon)";
                 SqlCommand command = new SqlCommand(query, conn);
                 command.Parameters.AddWithValue("@MaSach", sach.MaSach);
                 command.Parameters.AddWithValue("@TenSach", sach.TenSach);
                 command.Parameters.AddWithValue("@MaTacGia", sach.MaTacGia);
                 command.Parameters.AddWithValue("@MaTheLoai", sach.MaTheLoai);
-                command.Parameters.AddWithValue("@NamXuatBan", sach.NamXuatBan);
-                command.Parameters.AddWithValue("@NhaXuatBan", sach.NhaXuatBan);
+                command.Parameters.AddWithValue("@NamXuatBan", (object)sach.NamXuatBan ?? DBNull.Value);
+                command.Parameters.AddWithValue("@MaNhaXuatBan", sach.MaNhaXuatBan);
                 command.Parameters.AddWithValue("@TongSoLuong", sach.TongSoLuong);
                 command.Parameters.AddWithValue("@SoLuongCon", sach.SoLuongCon);
                 command.ExecuteNonQuery();
@@ -79,14 +81,14 @@ namespace DAL
             try
             {
                 conn.Open();
-                string query = "UPDATE Sach SET TenSach=@TenSach, MaTacGia=@MaTacGia, MaTheLoai=@MaTheLoai, NamXuatBan=@NamXuatBan, NhaXuatBan=@NhaXuatBan, TongSoLuong=@TongSoLuong, SoLuongCon=@SoLuongCon WHERE MaSach=@MaSach";
+                string query = "UPDATE Sach SET TenSach=@TenSach, MaTacGia=@MaTacGia, MaTheLoai=@MaTheLoai, NamXuatBan=@NamXuatBan, MaNhaXuatBan=@MaNhaXuatBan, TongSoLuong=@TongSoLuong, SoLuongCon=@SoLuongCon WHERE MaSach=@MaSach";
                 SqlCommand command = new SqlCommand(query, conn);
                 command.Parameters.AddWithValue("@MaSach", sach.MaSach);
                 command.Parameters.AddWithValue("@TenSach", sach.TenSach);
                 command.Parameters.AddWithValue("@MaTacGia", sach.MaTacGia);
                 command.Parameters.AddWithValue("@MaTheLoai", sach.MaTheLoai);
-                command.Parameters.AddWithValue("@NamXuatBan", sach.NamXuatBan);
-                command.Parameters.AddWithValue("@NhaXuatBan", sach.NhaXuatBan);
+                command.Parameters.AddWithValue("@NamXuatBan", (object)sach.NamXuatBan ?? DBNull.Value);
+                command.Parameters.AddWithValue("@MaNhaXuatBan", sach.MaNhaXuatBan);
                 command.Parameters.AddWithValue("@TongSoLuong", sach.TongSoLuong);
                 command.Parameters.AddWithValue("@SoLuongCon", sach.SoLuongCon);
                 command.ExecuteNonQuery();
@@ -122,11 +124,12 @@ namespace DAL
                 string query = @"
                     SELECT 
                         s.MaSach, s.TenSach, s.MaTacGia, s.MaTheLoai, 
-                        s.NamXuatBan, s.NhaXuatBan, s.TongSoLuong, s.SoLuongCon,
-                        tg.TenTacGia, tl.TenTheLoai
+                        s.NamXuatBan, s.MaNhaXuatBan, s.TongSoLuong, s.SoLuongCon,
+                        tg.TenTacGia, tl.TenTheLoai, nxb.TenNhaXuatBan
                     FROM Sach s
                     LEFT JOIN TacGia tg ON s.MaTacGia = tg.MaTacGia
                     LEFT JOIN TheLoai tl ON s.MaTheLoai = tl.MaTheLoai
+                    LEFT JOIN NhaXuatBan nxb ON s.MaNhaXuatBan = nxb.MaNhaXuatBan
                     WHERE s.MaSach LIKE @keyword OR s.TenSach LIKE @keyword";
                 SqlCommand command = new SqlCommand(query, conn);
                 command.Parameters.AddWithValue("@keyword", "%" + keyword + "%");
@@ -139,12 +142,13 @@ namespace DAL
                         TenSach = reader["TenSach"].ToString(),
                         MaTacGia = reader["MaTacGia"].ToString(),
                         MaTheLoai = reader["MaTheLoai"].ToString(),
-                        NamXuatBan = reader["NamXuatBan"].ToString(),
-                        NhaXuatBan = reader["NhaXuatBan"].ToString(),
+                        NamXuatBan = reader["NamXuatBan"] == DBNull.Value ? (int?)null : Convert.ToInt32(reader["NamXuatBan"]),
+                        MaNhaXuatBan = reader["MaNhaXuatBan"].ToString(),
                         TongSoLuong = Convert.ToInt32(reader["TongSoLuong"]),
                         SoLuongCon = Convert.ToInt32(reader["SoLuongCon"]),
                         TenTacGia = reader["TenTacGia"].ToString(),
-                        TenTheLoai = reader["TenTheLoai"].ToString()
+                        TenTheLoai = reader["TenTheLoai"].ToString(),
+                        TenNhaXuatBan = reader["TenNhaXuatBan"].ToString()
                     };
                     list.Add(sach);
                 }

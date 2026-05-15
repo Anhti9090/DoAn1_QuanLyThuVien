@@ -109,13 +109,19 @@
             // 
             // buttonThem
             // 
+            this.buttonThem.BackColor = System.Drawing.Color.LimeGreen;
             this.buttonThem.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.buttonThem.ForeColor = System.Drawing.Color.White;
+            this.buttonThem.Image = global::DoAn1_QuanLyThuVien.Properties.Resources.icons8_add_16;
+            this.buttonThem.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.buttonThem.Location = new System.Drawing.Point(23, 41);
             this.buttonThem.Name = "buttonThem";
-            this.buttonThem.Size = new System.Drawing.Size(110, 40);
+            this.buttonThem.Padding = new System.Windows.Forms.Padding(10, 0, 0, 0);
+            this.buttonThem.Size = new System.Drawing.Size(110, 45);
             this.buttonThem.TabIndex = 4;
             this.buttonThem.Text = "Thêm";
-            this.buttonThem.UseVisualStyleBackColor = true;
+            this.buttonThem.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.buttonThem.UseVisualStyleBackColor = false;
             this.buttonThem.Click += new System.EventHandler(this.buttonThem_Click);
             // 
             // label3
@@ -143,20 +149,28 @@
             // 
             this.buttonTimKiem.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.buttonTimKiem.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.buttonTimKiem.ForeColor = System.Drawing.Color.Blue;
+            this.buttonTimKiem.Image = global::DoAn1_QuanLyThuVien.Properties.Resources.icons8_search_16__1_;
+            this.buttonTimKiem.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.buttonTimKiem.Location = new System.Drawing.Point(1141, 41);
             this.buttonTimKiem.Name = "buttonTimKiem";
             this.buttonTimKiem.Size = new System.Drawing.Size(110, 40);
             this.buttonTimKiem.TabIndex = 7;
             this.buttonTimKiem.Text = "Tìm Kiếm";
+            this.buttonTimKiem.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.buttonTimKiem.UseVisualStyleBackColor = true;
             this.buttonTimKiem.Click += new System.EventHandler(this.buttonTimKiem_Click);
             // 
             // buttonXoa
             // 
             this.buttonXoa.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.buttonXoa.ForeColor = System.Drawing.Color.Red;
+            this.buttonXoa.Image = global::DoAn1_QuanLyThuVien.Properties.Resources.icons8_trash_can_16;
+            this.buttonXoa.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.buttonXoa.Location = new System.Drawing.Point(176, 41);
             this.buttonXoa.Name = "buttonXoa";
-            this.buttonXoa.Size = new System.Drawing.Size(110, 40);
+            this.buttonXoa.Padding = new System.Windows.Forms.Padding(15, 0, 0, 0);
+            this.buttonXoa.Size = new System.Drawing.Size(110, 45);
             this.buttonXoa.TabIndex = 4;
             this.buttonXoa.Text = "Xoá";
             this.buttonXoa.UseVisualStyleBackColor = true;
@@ -224,11 +238,15 @@
             // buttonLamMoi
             // 
             this.buttonLamMoi.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.buttonLamMoi.Image = global::DoAn1_QuanLyThuVien.Properties.Resources.icons8_reload_16;
+            this.buttonLamMoi.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.buttonLamMoi.Location = new System.Drawing.Point(328, 41);
             this.buttonLamMoi.Name = "buttonLamMoi";
-            this.buttonLamMoi.Size = new System.Drawing.Size(110, 40);
+            this.buttonLamMoi.Padding = new System.Windows.Forms.Padding(10, 0, 0, 0);
+            this.buttonLamMoi.Size = new System.Drawing.Size(130, 45);
             this.buttonLamMoi.TabIndex = 4;
             this.buttonLamMoi.Text = "Làm Mới";
+            this.buttonLamMoi.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.buttonLamMoi.UseVisualStyleBackColor = true;
             this.buttonLamMoi.Click += new System.EventHandler(this.buttonLamMoi_Click);
             // 
